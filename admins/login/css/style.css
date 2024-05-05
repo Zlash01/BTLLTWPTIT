@@ -1,3 +1,13 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  background-image: url('https://lh3.googleusercontent.com/pw/AP1GczNz6ce5CivhsN0vrBUO3argjTdoQc_WvMgQiNbG4VDk-dfot_aiLDJQcCWMHscVpkVoifAgC8HufKSJyX8n0qAgJNf9ZvSWzDSWWBCMdIKqqKSiDk43l5J449vEBPRUwUAwKJHtT5JpfMdoAFlqHZUW=w1365-h768-s-no?authuser=0');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+}
 .login__flex {
   flex-direction: column;
   gap: 5px;
