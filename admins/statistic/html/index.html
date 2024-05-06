@@ -8,22 +8,18 @@
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
-    <header class="header">
-      <img
-        class="logo"
-        alt="ptit"
-        src="https://code.ptit.edu.vn/2020/images/logo_ptit.png"
-      />
-      <nav class="main-nav">
-        <ul class="main-nav-list">
-          <li><a href="../../dashboard/html/index.html" class="main-nav-link">Dashboard</a></li>
+    <ul class="navbar">
+      <li>
+          <div class="logo-container">
+              <img class="logo" src="https://code.ptit.edu.vn/2020/images/logo_ptit.png" alt="Logo">
+          </div>
+      </li>
+      <li><a href="../../dashboard/html/index.html" class="main-nav-link">Dashboard</a></li>
           <li><a href="../../create/html/index.html" class="main-nav-link">Create</a></li>
           <li><a href="../../results/html/index.html" class="main-nav-link">Results</a></li>
           <li><a href="../../statistic/html/index.html" class="main-nav-link">Statistics</a></li>
-          <li><a href="../../login/html/index.html" class="nav-cta main-nav-link">Sign out</a></li>
-        </ul>
-      </nav>
-    </header>
+      <li><a href="../../login/html/index.html" class="logout-btn"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
+    </ul>
     <div class="filters">
       <label for="exam-filter">Filter by Exam:</label>
       <select id="exam-filter">
