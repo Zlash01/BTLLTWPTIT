@@ -1,69 +1,72 @@
+
 body {
+  display:contents;
   font-size: 1.6rem;
+  margin: 0;
+  font-family: "Arial", sans-serif;
 }
 
-/* header section */
+.main-content {
+  margin-left: 250px; /* Khoảng cách giữa phần nội dung và cột navbar */
+  padding: 20px;
+  overflow: auto; /* Điều này đảm bảo rằng nội dung không bị tràn ra khỏi phần tử cha */
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 
 .logo {
-  height: 3.6rem;
+  width: 100px;
+  border-radius: 50%;
   background-color: white;
-  border-radius: 2px;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #ff4122;
-
-  height: 4.8rem;
-  padding: 0 2.4rem;
-}
-/* ************************ */
-
-/* navigation */
-.main-nav-list {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 3.2rem;
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 15%;
+  background-color: rgb(212, 21, 21);
+  position: fixed;
+  top:0;
+  left:0;
+  height: 100%;
+  overflow: hidden;
 }
 
-.main-nav-link:link,
-.main-nav-link:visited {
+.navbar li a {
+  display: block;
+  color: white;
+  font-size: 18px;
+  padding: 20px;
   text-decoration: none;
-  color: #fff;
-  font-weight: 400;
-  font-size: 1.4rem;
-  transition: all 0.3s;
 }
 
-.main-nav-link:hover,
-.main-nav-link:active {
+.navbar li a.active {
+  background-color: rgb(255, 83, 83);
+}
+
+.navbar li a:hover:not(.active) {
+  background-color: rgb(255, 83, 83);
+}
+
+.logout-btn {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 20px;
+  text-decoration: none;
   color: white;
 }
 
-.nav-cta:link,
-.nav-cta:visited {
-  display: inline-block;
-  padding: 0.8rem 2.4rem;
-  border: 1px solid white;
-  border-radius: 4px;
-  font-weight: 500;
-  color: white;
+.logout-btn:hover {
+  background-color: rgb(255, 83, 83);
 }
 
-.nav-cta:hover,
-.nav-cta:active {
-  background-color: #ff6242;
-  box-shadow: inset 0 0 0 1px #cf711f;
-}
-
-.exam__page {
-  margin-top: 3.6rem;
-  margin-bottom: 1.6rem;
-}
-/* *************************** */
 
 .filters {
   margin: 2rem;
@@ -101,3 +104,4 @@ button {
 #export-btn {
   margin: 1.2rem 2.4rem;
 }
+
