@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Students' Result</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../general.css" />
+  </head>
+  <body>
+    <header class="header margin-bot-sm">
+      <img
+        class="logo"
+        alt="Ptit"
+        src="https://code.ptit.edu.vn/2020/images/logo_ptit.png"
+      />
+      <nav class="main-nav">
+        <ul class="main-nav-list">
+          <li>
+            <a href="../dashboard/index.html" class="main-nav-link"
+              >Dashboard</a
+            >
+          </li>
+          <li>
+            <a href="../create/index.html" class="main-nav-link">Create</a>
+          </li>
+          <li>
+            <a href="../results/index.html" class="main-nav-link">Results</a>
+          </li>
+          <li>
+            <a href="../statistic/index.html" class="main-nav-link"
+              >Statistics</a
+            >
+          </li>
+          <li>
+            <a href="../login/index.html" class="nav-cta main-nav-link"
+              >Sign out</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="results-title">Results</div>
+      <div class="results-form">
+        <div class="searchStu">Search for</div>
+        <input type="text" placeholder="By name, student ID" class="txtInput" />
+        <button class="searchBtn">Search</button>
+      </div>
+    </div>
+
+    <div class="results-table">
+      <table class="table">
+        <thead>
+          <tr class="danger">
+            <th style="background-color: #f8d7da">Number</th>
+            <th style="background-color: #f8d7da">Category</th>
+            <th style="background-color: #f8d7da">Score</th>
+            <th style="background-color: #f8d7da">Status</th>
+            <th style="background-color: #f8d7da">Participation Time</th>
+            <th style="background-color: #f8d7da"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Practice</td>
+            <td>10</td>
+            <td>Completed</td>
+            <td>...</td>
+            <td>
+              <a href="details.html"
+                ><button type="button" class="show-details">Details</button></a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Midterm</td>
+            <td>6</td>
+            <td>Completed</td>
+            <td>...</td>
+            <td>
+              <a href="details.html"
+                ><button type="button" class="show-details">Details</button></a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Finals</td>
+            <td>...</td>
+            <td>Incomplete</td>
+            <td>...</td>
+            <td>
+              <a href="details.html"
+                ><button type="button" class="show-details">Details</button></a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

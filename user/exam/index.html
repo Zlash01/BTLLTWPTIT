@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <title>Navigation Bar with Logo, Countdown, and Logout Button</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li class="header-logo">
+          <img
+            class="logo"
+            alt="OmniFood logo"
+            src="https://code.ptit.edu.vn/2020/images/logo_ptit.png"
+          />
+        </li>
+        <li>
+          <div id="countdown" class="countdown">
+            <ul>
+              <li><span id="minutes">10</span></li>
+              <li class="separator">:</li>
+              <li><span id="seconds">00</span></li>
+            </ul>
+          </div>
+        </li>
+        <li class="menu"><a href="../../main/html/index.html">Main menu</a></li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <div class="sidebar">
+        <div class="account">
+          <div class="account-img">
+            <img
+              class="avatar"
+              src="https://t4.ftcdn.net/jpg/03/49/49/79/360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg"
+              alt="Avatar"
+              width="30"
+              height="30"
+            />
+          </div>
+          <span>Account Name</span>
+        </div>
+        <div class="submit-box">
+          <button class="submit-button" id="submitButton">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="test">
+      <form
+        class="testform"
+        id="testForm"
+        action="../../results/html/index.html"
+        method="get"
+      >
+        <div>
+          <p class="questions">
+            Question 1: Triết học ra đời trong khoảng thời gian:
+          </p>
+          <label>
+            <input type="radio" name="question1" value="option1" />A. Xuất hiện
+            cùng lúc với sự xuất hiện của con người </label
+          ><br />
+          <label>
+            <input type="radio" name="question1" value="option2" />B. Từ khoảng
+            thế kỉ VIII đến thế kỉ VI TCN </label
+          ><br />
+          <label>
+            <input type="radio" name="question1" value="option3" />C. Từ khoảng
+            thế kỉ VI đến thế kỉ I TCN </label
+          ><br />
+          <label>
+            <input type="radio" name="question1" value="option4" />D. Từ khoảng
+            thế kỉ I TCN đến thế kỉ III </label
+          ><br />
+          <input type="hidden" name="correct1" value="option2" />
+        </div>
+        <br />
+        <div>
+          <p class="questions">
+            Question 2: Chức năng của triết học Mác Lênin là:
+          </p>
+          <label>
+            <input type="radio" name="question2" value="option1" />A. Chức năng
+            chú giải văn bản </label
+          ><br />
+          <label>
+            <input type="radio" name="question2" value="option2" />B. Chức năng
+            làm sáng tỏ cấu trúc ngôn ngữ </label
+          ><br />
+          <label>
+            <input type="radio" name="question2" value="option3" />C. Chức năng
+            khoa học của các khoa học </label
+          ><br />
+          <label>
+            <input type="radio" name="question2" value="option4" />D. Chức năng
+            thế giới quan và phương pháp luận </label
+          ><br />
+          <input type="hidden" name="correct2" value="option4" />
+        </div>
+        <br />
+        <div>
+          <p class="questions">Question 3: Vấn đề cơ bản của triết học là:</p>
+          <label>
+            <input type="radio" name="question3" value="option1" />A. Vấn đề vật
+            chất và ý thức </label
+          ><br />
+          <label>
+            <input type="radio" name="question3" value="option2" />B. Vấn đề về
+            mối quan hệ giữa vật chất và ý thức </label
+          ><br />
+          <label>
+            <input type="radio" name="question3" value="option3" />C. Vấn đề
+            quan hệ giữa con người và thế giới xung quanh </label
+          ><br />
+          <label>
+            <input type="radio" name="question3" value="option4" />D. Vấn đề
+            logic cú pháp của ngôn ngữ </label
+          ><br />
+          <input type="hidden" name="correct3" value="option1" />
+        </div>
+        <br />
+        <div>
+          <p class="questions">
+            Question 4: Trong các câu sau, đâu là khẳng định đúng về triết học?
+          </p>
+          <label>
+            <input type="radio" name="question4" value="option1" />A. Triết học
+            là một hình thái ý thức xã hội </label
+          ><br />
+          <label>
+            <input type="radio" name="question4" value="option2" />B. Khách thể
+            nghiên cứu của Triết học là thế giới (gồm cả thế giới bên trong và
+            bên ngoài con người) </label
+          ><br />
+          <label>
+            <input type="radio" name="question4" value="option3" />C. Triết học
+            là hạt nhân của thế giới quan </label
+          ><br />
+          <label>
+            <input type="radio" name="question4" value="option4" />D. Tất cả đáp
+            án trên đều đúng </label
+          ><br />
+          <input type="hidden" name="correct4" value="option4" />
+        </div>
+        <br />
+        <div>
+          <p class="questions">
+            Question 5: Ý thức có trước, vật chất có sau, ý thức quyết định vật
+            chất, đây là quan điểm:
+          </p>
+          <label>
+            <input type="radio" name="question5" value="option1" />A. Duy vật </label
+          ><br />
+          <label>
+            <input type="radio" name="question5" value="option2" />B. Duy tâm </label
+          ><br />
+          <label>
+            <input type="radio" name="question5" value="option3" />C. Nhị nguyên </label
+          ><br />
+          <label>
+            <input type="radio" name="question5" value="option4" />D. Duy tâm
+            chủ quan </label
+          ><br />
+          <input type="hidden" name="correct5" value="option2" />
+        </div>
+        <br />
+        <div>
+          <p class="questions">
+            Question 6: Theo chủ nghĩa MácLênin, phát triển là:
+          </p>
+          <label>
+            <input type="radio" name="question6" value="option1" />A. Sự thay
+            đổi về chất trong quá trình vận động của vật chất </label
+          ><br />
+          <label>
+            <input type="radio" name="question6" value="option2" />B. Sự thay
+            đổi về lượng trong quá trình vận động của vật chất </label
+          ><br />
+          <label>
+            <input type="radio" name="question6" value="option3" />C. Khuynh
+            hướng chung của sự vận động của sự vật và hiện tượng </label
+          ><br />
+          <label>
+            <input type="radio" name="question6" value="option4" />D. Vận động </label
+          ><br />
+          <input type="hidden" name="correct6" value="option3" />
+        </div>
+        <br />
+        <div>
+          <p class="questions">
+            Question 7: Chọn câu trả lời đúng: Chất của sự vật là?
+          </p>
+          <label>
+            <input type="radio" name="question7" value="option1" />A. Cấu trúc
+            của sự vật </label
+          ><br />
+          <label>
+            <input type="radio" name="question7" value="option2" />B. Tổng số
+            các thuộc tính </label
+          ><br />
+          <label>
+            <input type="radio" name="question7" value="option3" />C. Các thuộc
+            tính sự vật </label
+          ><br />
+          <label>
+            <input type="radio" name="question7" value="option4" />D. Sự thống
+            nhất hữu cơ các thuộc tính </label
+          ><br />
+          <input type="hidden" name="correct7" value="option4" />
+        </div>
+        <br />
+        <div>
+          <p class="questions">
+            Question 8: Theo Ph.Ăngghen, hình thức vận động nào nói lên sự thay
+            đổi vị trí của vật thể trong không gian?
+          </p>
+          <label>
+            <input type="radio" name="question8" value="option1" />A. Cơ học </label
+          ><br />
+          <label>
+            <input type="radio" name="question8" value="option2" />B. Lý học </label
+          ><br />
+          <label>
+            <input type="radio" name="question8" value="option3" />C. Xã hội </label
+          ><br />
+          <label>
+            <input type="radio" name="question8" value="option4" />D. Hóa học </label
+          ><br />
+          <input type="hidden" name="correct8" value="option1" />
+        </div>
+
+        <!-- Add more divs for additional questions -->
+        <br />
+      </form>
+    </div>
+
+    <script src="../js/testmain.js" defer></script>
+  </body>
+</html>

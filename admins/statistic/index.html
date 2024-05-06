@@ -4,21 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Exam Results</title>
-    <link rel="stylesheet" href="../../../general.css" />
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../../general.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <ul class="navbar">
       <li>
-          <div class="logo-container">
-              <img class="logo" src="https://code.ptit.edu.vn/2020/images/logo_ptit.png" alt="Logo">
-          </div>
+        <div class="logo-container">
+          <img
+            class="logo"
+            src="https://code.ptit.edu.vn/2020/images/logo_ptit.png"
+            alt="Logo"
+          />
+        </div>
       </li>
-      <li><a href="../../dashboard/html/index.html" class="main-nav-link">Dashboard</a></li>
-          <li><a href="../../create/html/index.html" class="main-nav-link">Create</a></li>
-          <li><a href="../../results/html/index.html" class="main-nav-link">Results</a></li>
-          <li><a href="../../statistic/html/index.html" class="main-nav-link">Statistics</a></li>
-      <li><a href="../../login/html/index.html" class="logout-btn"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
+      <li>
+        <a href="../dashboard/index.html" class="main-nav-link">Dashboard</a>
+      </li>
+      <li>
+        <a href="../create/index.html" class="main-nav-link">Create</a>
+      </li>
+      <li>
+        <a href="../results/index.html" class="main-nav-link">Results</a>
+      </li>
+      <li>
+        <a href="../statistic/index.html" class="main-nav-link">Statistics</a>
+      </li>
+      <li>
+        <a href="../login/index.html" class="logout-btn"
+          ><i class="fa fa-sign-out"></i> Đăng xuất</a
+        >
+      </li>
     </ul>
     <div class="filters">
       <label for="exam-filter">Filter by Exam:</label>
@@ -47,6 +63,6 @@
     <button id="export-btn">Export to PDF</button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
-    <script src="../js/script.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

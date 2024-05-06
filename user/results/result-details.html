@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="result-details.css" />
+    <link rel="stylesheet" href="../../general.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Kết quả</title>
+  </head>
+
+  <body>
+    <ul class="navbar">
+      <li>
+        <div class="logo-container">
+          <img
+            class="logo"
+            src="https://code.ptit.edu.vn/2020/images/logo_ptit.png"
+            alt="Logo"
+          />
+        </div>
+      </li>
+      <li><a href="../main/index.html">Bài thi</a></li>
+      <li><a class="active" href="index.html">Kết quả</a></li>
+      <li>
+        <a href="#" class="logout-btn"
+          ><i class="fa fa-sign-out"></i> Đăng xuất</a
+        >
+      </li>
+    </ul>
+
+    <div class="container">
+      <div class="user-pf">
+        <a class="back-btn" href="results.html"
+          ><i class="fa fa-chevron-left"></i> Quay lại</a
+        >
+
+        <div style="display: flex; align-items: center">
+          <img
+            class="pfp"
+            src="https://t4.ftcdn.net/jpg/03/49/49/79/360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg"
+          />
+
+          <div class="dropdown">
+            <button class="dropbtn">
+              <span id="username">Username</span>
+              <i class="fa fa-angle-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Hồ sơ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <h1>Kết quả cụ thể</h1>
+
+        <div class="result-box">
+          <div class="exam-info">
+            <p class="exam-title">Tên bài thi: <span id="exam-title"></span></p>
+            <p class="exam-datetime">
+              Thời gian hoàn thành: <span id="exam-datetime"></span>
+            </p>
+          </div>
+
+          <div class="result-info">
+            <p class="result">Số câu đúng: <span id="result"></span></p>
+            <p class="score">Điểm: <span id="score"></span></p>
+          </div>
+
+          <div class="question-list-container">
+            <div id="question-list">
+              <!--thêm câu hỏi và câu trả lời của bài kiểm tra, voi ten class la question-box vào đây-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

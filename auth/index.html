@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Đăng nhập sinh viên</title>
+  </head>
+  <body>
+    <div class="login__main">
+      <div class="login__logo">
+        <img src="https://code.ptit.edu.vn/2020/images/logo_ptit.png" />
+      </div>
+
+      <div class="login__main__title">
+        <p>Đăng nhập sinh viên</p>
+      </div>
+
+      <form action="" class="login__main__form" method="post">
+        <div class="login__flex">
+          <label for="login__user">Tài khoản</label>
+          <input type="text" name="username" id="login__user" />
+        </div>
+        <div class="login__flex">
+          <label for="login__pw">Mật khẩu</label>
+          <input type="password" name="password" id="login__pw" />
+        </div>
+
+        <button type="submit" class="login__btn"><span>Đăng nhập</span></button>
+
+        <div class="login__margin__top account">
+          <p>Chưa có tài khoản? <a href="register.html">Đăng ký mới</a></p>
+        </div>
+
+        <div class="login__margin__top account"></div>
+      </form>
+    </div>
+
+    <script src="login.js"></script>
+  </body>
+</html>
