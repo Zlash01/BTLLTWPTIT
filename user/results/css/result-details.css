@@ -1,187 +1,67 @@
-body {
-    margin: 0;
-    font-family: "Arial", sans-serif;
-  }
-  
-  .logo-container {
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-  
-  .logo {
-    width: 100px;
-    border-radius: 50%;
-    background-color: white;
-  }
-  
-  .navbar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 15%;
-    background-color: rgb(212, 21, 21);
-    position: fixed;
-    height: 100%;
-    overflow: hidden;
-  }
-  
-  .navbar li a {
-    display: block;
-    color: white;
-    font-size: 18px;
-    padding: 20px;
-    text-decoration: none;
-  }
-  
-  .navbar li a.active {
-    background-color: rgb(255, 83, 83);
-  }
-  
-  .navbar li a:hover:not(.active) {
-    background-color: rgb(255, 83, 83);
-  }
-  
-  .logout-btn {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    padding: 20px;
-    text-decoration: none;
-    color: white;
-  }
-  
-  .logout-btn:hover {
-    background-color: rgb(255, 83, 83);
-  }
-  
-  .container {
-    margin-left: 15%;
-    height: 100vh;
-    display: flex;
-    flex-flow: column;
-  }
-  
-  .user-pf {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(248, 242, 234);
-    list-style: none;
-    height: 70px;
-    padding-left: 30px;
-    padding-right: 30px;
-  }
+.user-pf {
+  justify-content: space-between !important;
+}
 
-  .back-btn {
-    text-decoration: none;
-    color: black;
-    font-size: 20px;
-  }
+.back-btn {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
 
-  .back-btn:hover {
-    color: red;
-  }
-  
-  .pfp {
-    max-width: 40px;
-    border-radius: 50%;
-  }
-  
-  .dropbtn {
-    background-color: rgb(248, 242, 234);
-    color: black;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  /* The container <div> - needed to position the dropdown content */
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 130px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  /* Links inside the dropdown */
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {
-    background-color: rgb(192, 192, 192);
-  }
-  
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  .main-content {
-    background-color: rgb(236, 234, 234);
-    flex-grow: 1;
-  }
-  
-  .result-box {
-    background-color: white;
-    margin: 30px;
-    padding: 5px 20px 30px;
-    border-radius: 10px;
-  }
-  
-  .exam-info {
-    font-size: 20px;
-  }
-  
-  .result-info {
-    text-align: center;
-    font-size: 2rem;
-    line-height: 20px;
-  }
-  
-  .question-list-container {
-    border: 2px solid #222;
-    background-color: #f0efef;
-    padding: 1.2rem;
-    border-radius: 5px;
-  }
-  
-  .question-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: baseline;
-    gap: 0.5rem;
-    background-color: #eee;
-    padding: 0.6rem 1.2rem;
-    border: 1px groove #111;
-    border-radius: 5px;
-  }
-  
-  #question-list {
-    font-size: 1.6rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  h1 {
-    margin-top: 30px;
-    margin-left: 30px;
-    margin-right: 10px;
-  }
+.back-btn:hover {
+  color: red;
+}
+
+.main-content {
+  background-color: rgb(236, 234, 234);
+  flex-grow: 1;
+}
+
+.result-box {
+  background-color: white;
+  margin: 30px;
+  padding: 5px 20px 30px;
+  border-radius: 10px;
+}
+
+.exam-info {
+  font-size: 20px;
+}
+
+.result-info {
+  text-align: center;
+  font-size: 2rem;
+  line-height: 20px;
+}
+
+.question-list-container {
+  border: 2px solid #222;
+  background-color: #f0efef;
+  padding: 1.2rem;
+  border-radius: 5px;
+}
+
+.question-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.5rem;
+  background-color: #eee;
+  padding: 0.6rem 1.2rem;
+  border: 1px groove #111;
+  border-radius: 5px;
+}
+
+#question-list {
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+h1 {
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-right: 10px;
+}

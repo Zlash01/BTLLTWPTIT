@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ học sinh</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../../general.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <ul class="navbar">
-        <li>
+        
             <div class="logo-container">
                 <img class="logo" src="https://code.ptit.edu.vn/2020/images/logo_ptit.png" alt="Logo">
             </div>
-        </li>
+        
         <li><a class="active" href="index.html">Bài thi</a></li>
         <li><a href="../../results/html/results.html">Kết quả</a></li>
         <li><a href="#" class="logout-btn"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
@@ -48,7 +49,31 @@
             
             <div class="warp__list">
                 <div id="examsList">
-                  <!--api thêm các test, với class là exam-card vào đây-->
+                    
+                    <!--api thêm các test, với class là exam-card vào đây-->
+
+                    <div class="exam-card">
+                        <div class="exam-info">
+                            <h3>Bài thi giữa kì</h3>
+                            <p>Môn: CNXH</p>
+                            <p>Tình trạng: chưa hoàn thành</p>
+                        </div>
+                        <div class="start">
+                            <a href="#"><button class="start-btn" type="button">Làm bài</button></a>
+                        </div>
+                    </div>
+
+                    <div class="exam-card">
+                        <div class="exam-info">
+                            <h3>Bài thi cuối kì</h3>
+                            <p>Môn: CNXH</p>
+                            <p>Tình trạng: chưa hoàn thành</p>
+                        </div>
+                        <div class="start">
+                            <a href="#"><button class="start-btn" type="button">Làm bài</button></a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
