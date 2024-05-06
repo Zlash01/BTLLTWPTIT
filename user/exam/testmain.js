@@ -56,3 +56,33 @@ document.getElementById("submitButton").addEventListener("click", function () {
 
   window.location.href = "../results/index.html?score=" + score;
 });
+
+//Generate question indicator boxes based on the number of questions 
+document.addEventListener('DOMContentLoaded', function() {
+  const testForm = document.getElementById('testForm');
+  const boxContainer = document.getElementById('box-container');
+
+  // Get all questions and their corresponding radio buttons
+  const questions = testForm.querySelectorAll('.question');
+
+  // Create question indicator boxes dynamically
+  questions.forEach(function(question, index) {
+      const box = document.createElement('div');
+      box.className = 'box';
+      box.textContent = index + 1; // Display question number (1-based index)
+      boxContainer.appendChild(box);
+
+      // Event listener for radio button change within each question
+      const radioButtons = question.querySelectorAll('input[type="radio"]');
+      radioButtons.forEach(function(radioButton) {
+          radioButton.addEventListener('change', function() {
+              if (this.checked) {
+                  // Change color of the corresponding box to green
+                  box.style.backgroundColor = '#4CAF50';
+              }
+          });
+      });
+  });
+});
+
+//added indcator generator
