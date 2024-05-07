@@ -1,72 +1,45 @@
-import { apiPost } from "../apiServices";
-
-document.querySelector(".login__btn").addEventListener("click", function () {
+import { apiPost } from "../apiServices.js";
+function validateLogin() {
   const account = document.querySelector("#login__user").value;
   const password = document.querySelector("#login__pw").value;
   console.log(account);
   console.log(password);
-  if (isValidPasswordFrontend(password)) {
-    // Password is valid
-    handleLoginBackend(account, password);
-  } else if (account == "" || password == "") {
-    alert("Please enter both Username and Password!");
-  } else {
-    // Password is invalid
-    console.log(
-      "Password is invalid. It must have at least 1 uppercase letter, 1 lowercase letter, 1 number, and be 8 characters long."
-    );
-    alert(
-      "Password is invalid. It must have at least 1 uppercase letter, 1 lowercase letter, 1 number, and be 8 characters long."
-    );
-  }
-});
 
-function isValidPasswordFrontend(password) {
-  // Password must be at least 8 characters long
-  if (password.length < 8) {
-    return false;
-  }
-
-  // Password must contain at least one uppercase letter, one lowercase letter, and one number
-  var hasUpperCase = false;
-  var hasLowerCase = false;
-  var hasNumber = false;
-
-  for (var i = 0; i < password.length; i++) {
-    var char = password.charAt(i);
-    if (char >= "A" && char <= "Z") {
-      hasUpperCase = true;
-    } else if (char >= "a" && char <= "z") {
-      hasLowerCase = true;
-    } else if (!isNaN(parseInt(char))) {
-      hasNumber = true;
-    }
-  }
-
-  return hasUpperCase && hasLowerCase && hasNumber;
+  handleLoginBackend(account, password);
+  console.log("debug");
 }
 
-function handleLoginBackend(username, password) {
+function handleLoginBackend(loginUsername, loginPassword) {
   var data = {
     email: loginUsername,
     password: loginPassword,
   };
 
-  apiPost("/api/login", data)
+  apiPost("/api/users/login", data)
     .then((response) => {
       localStorage.setItem("token", response.accessToken);
+      localStorage.setItem("role", response.role);
       alert("Đăng nhập thành công");
-      isTokenExpired();
+      navigate();
     })
     .catch((error) => {
       alert("Đăng nhập thất bại");
+      console.log(error);
     });
 }
 
-function navigate(isAdmin) {
+function navigate() {
+  let role = localStorage.getItem("role");
+  let isAdmin = false;
+  if (role === "admin") isAdmin = true;
+  console.log(isAdmin);
+  console.log(role);
+
   if (isAdmin) {
-    window.location.href = "http://127.0.0.1:5500/admin/index.html";
+    window.location.href = "http://127.0.0.1:5500/admins/dashboard/index.html";
   } else {
-    window.location.href = "http://127.0.0.1:5500/user/index.html";
+    window.location.href = "http://127.0.0.1:5500/user/main/index.html";
   }
 }
+
+window.validateLogin = validateLogin;

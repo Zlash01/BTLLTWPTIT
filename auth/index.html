@@ -16,7 +16,7 @@
         <p>Đăng nhập sinh viên</p>
       </div>
 
-      <form action="" class="login__main__form" method="post">
+      <form class="login__main__form">
         <div class="login__flex">
           <label for="login__user">Tài khoản</label>
           <input type="text" name="username" id="login__user" />
@@ -26,7 +26,9 @@
           <input type="password" name="password" id="login__pw" />
         </div>
 
-        <button type="submit" class="login__btn"><span>Đăng nhập</span></button>
+        <button onclick="validateLogin()" type="button" class="login__btn">
+          <span>Đăng nhập</span>
+        </button>
 
         <div class="login__margin__top account">
           <p>Chưa có tài khoản? <a href="register.html">Đăng ký mới</a></p>
@@ -36,6 +38,6 @@
       </form>
     </div>
 
-    <script src="login.js"></script>
+    <script type="module" src="./login.js"></script>
   </body>
 </html>

@@ -7,39 +7,57 @@
     <title>Đăng ký tài khoản</title>
   </head>
   <body>
-      <div class="login__main">
-
-        <div class="login__logo">
-          <img src="https://code.ptit.edu.vn/2020/images/logo_ptit.png"/>
-        </div>
-
-        <div class="login__main__title">
-          <p>Đăng ký tài khoản mới</p>
-        </div>
-
-        <form action="" class="login__main__form" method="post">
-          <div class="login__flex">
-            <label for="register__user">Tên tài khoản</label>
-            <input type="text" name="username" id="register__user" value=""/>
-          </div>
-          <div class="login__flex">
-            <label for="register__pw">Mật khẩu</label>
-            <input type="password" name="password" id="register__pw"/>
-          </div>
-          <div class="login__flex">
-            <label for="register__pw__again">Nhập lại mật khẩu</label>
-            <input type="password" name="password__again" id="register__pw__again"/>
-          </div>
-          
-          <button type="submit" class="register__btn"><span>Đăng ký</span></button>
-
-          <div class="login__margin__top account">
-            <p>Đã có tài khoản? <a href="index.html">Đăng nhập</a></p>
-        </form>
-
+    <div class="login__main">
+      <div class="login__logo">
+        <img src="https://code.ptit.edu.vn/2020/images/logo_ptit.png" />
       </div>
 
-    <script src="register.js"></script>
+      <div class="login__main__title">
+        <p>Đăng ký tài khoản mới</p>
+      </div>
 
+      <form class="login__main__form">
+        <div class="login__flex">
+          <label for="register__user">Tên tài khoản</label>
+          <input type="text" name="username" id="register__user" value="" />
+        </div>
+        <div class="login__flex">
+          <label for="register__pw">Mật khẩu</label>
+          <input type="password" name="password" id="register__pw" />
+        </div>
+        <div class="login__flex">
+          <label for="register__pw__again">Nhập lại mật khẩu</label>
+          <input
+            type="password"
+            name="password__again"
+            id="register__pw__again"
+          />
+        </div>
+        <div class="login__flex">
+          <label for="register__name">Họ và tên</label>
+          <input type="text" name="name" id="register__name" />
+        </div>
+        <div class="login__flex">
+          <label for="register__class">Lớp</label>
+          <input type="text" name="class" id="register__class" />
+        </div>
+        <div class="login__flex">
+          <label for="register__student_id">Mã sinh viên</label>
+          <input type="text" name="student_id" id="register__student_id" />
+        </div>
+        <button
+          onclick="validateRegister()"
+          type="button"
+          class="register__btn"
+        >
+          <span>Đăng ký</span>
+        </button>
+        <div class="login__margin__top account">
+          <p>Đã có tài khoản? <a href="./index.html">Đăng nhập</a></p>
+        </div>
+      </form>
+    </div>
+
+    <script type="module" src="./register.js"></script>
   </body>
 </html>
