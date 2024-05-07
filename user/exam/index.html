@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="styles.css" />
 
-    <title>Navigation Bar with Logo, Countdown, and Logout Button</title>
+    <title>Test PTIT</title>
   </head>
   <body>
     <nav>
@@ -44,6 +44,7 @@
           </div>
           <span>Account Name</span>
         </div>
+        <div id="box-container"></div>
         <div class="submit-box">
           <button class="submit-button" id="submitButton">Submit</button>
         </div>
@@ -57,7 +58,7 @@
         action="../../results/html/index.html"
         method="get"
       >
-        <div>
+        <div class="question">
           <p class="questions">
             Question 1: Triết học ra đời trong khoảng thời gian:
           </p>
@@ -80,7 +81,7 @@
           <input type="hidden" name="correct1" value="option2" />
         </div>
         <br />
-        <div>
+        <div class="question">
           <p class="questions">
             Question 2: Chức năng của triết học Mác Lênin là:
           </p>
@@ -103,7 +104,7 @@
           <input type="hidden" name="correct2" value="option4" />
         </div>
         <br />
-        <div>
+        <div class="question">
           <p class="questions">Question 3: Vấn đề cơ bản của triết học là:</p>
           <label>
             <input type="radio" name="question3" value="option1" />A. Vấn đề vật
@@ -124,7 +125,7 @@
           <input type="hidden" name="correct3" value="option1" />
         </div>
         <br />
-        <div>
+        <div class="question">
           <p class="questions">
             Question 4: Trong các câu sau, đâu là khẳng định đúng về triết học?
           </p>
@@ -148,7 +149,7 @@
           <input type="hidden" name="correct4" value="option4" />
         </div>
         <br />
-        <div>
+        <div class="question">
           <p class="questions">
             Question 5: Ý thức có trước, vật chất có sau, ý thức quyết định vật
             chất, đây là quan điểm:
@@ -169,7 +170,7 @@
           <input type="hidden" name="correct5" value="option2" />
         </div>
         <br />
-        <div>
+        <div class="question">
           <p class="questions">
             Question 6: Theo chủ nghĩa MácLênin, phát triển là:
           </p>
@@ -191,7 +192,7 @@
           <input type="hidden" name="correct6" value="option3" />
         </div>
         <br />
-        <div>
+        <div class="question">
           <p class="questions">
             Question 7: Chọn câu trả lời đúng: Chất của sự vật là?
           </p>
@@ -214,7 +215,7 @@
           <input type="hidden" name="correct7" value="option4" />
         </div>
         <br />
-        <div>
+        <div class="question">
           <p class="questions">
             Question 8: Theo Ph.Ăngghen, hình thức vận động nào nói lên sự thay
             đổi vị trí của vật thể trong không gian?
@@ -242,3 +243,6 @@
     <script src="../js/testmain.js" defer></script>
   </body>
 </html>
+
+<!-- Added new class="question" to the test form   -->
+<!-- Added new <div id="box-container"> to the sidebar   -->

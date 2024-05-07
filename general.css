@@ -43,6 +43,7 @@ body {
 
 .navbar li a.active {
   background-color: rgb(255, 83, 83);
+  border-left: 2px solid white;
 }
 
 .navbar li a:hover:not(.active) {

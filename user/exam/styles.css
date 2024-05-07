@@ -102,7 +102,7 @@ color: #f4f4f4;
   height: 100%;
 }
 .submit-box {
-  margin-top: 200%; /* Push to the bottom */
+  margin-top: 116%; /* Push to the bottom */
   position: relative;
 }
 
@@ -123,3 +123,26 @@ color: #f4f4f4;
   margin-left: 1rem;
   z-index: 888;
 }
+
+#box-container {
+  display: grid;
+  grid-template-columns: repeat(4, 50px); /* 4 boxes per row */
+  grid-gap: 10px; /* Spacing between boxes */
+  justify-content: center;
+  align-items: center;
+  margin-top: 220px;
+}
+
+.box {
+  width: 50px;
+  height: 50px;
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* added #box-container*/
+/* added .box*/

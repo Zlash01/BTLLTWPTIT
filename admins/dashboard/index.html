@@ -1,145 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../general.css" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Exam Management Dashboard</title>
-  </head>
-  <body>
-    <header class="header margin-bot-sm">
-      <img
-        class="logo"
-        alt="Ptit"
-        src="https://code.ptit.edu.vn/2020/images/logo_ptit.png"
-      />
-      <nav class="main-nav">
-        <ul class="main-nav-list">
-          <li>
-            <a href="../dashboard/index.html" class="main-nav-link"
-              >Dashboard</a
-            >
-          </li>
-          <li>
-            <a href="../create/index.html" class="main-nav-link">Create</a>
-          </li>
-          <li>
-            <a href="../results/index.html" class="main-nav-link">Results</a>
-          </li>
-          <li>
-            <a href="../statistic/index.html" class="main-nav-link"
-              >Statistics</a
-            >
-          </li>
-          <li>
-            <a href="../login/index.html" class="nav-cta main-nav-link"
-              >Sign out</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <div class="warpping">
-      <h1 class="margin-bot-med">Exam Management Dashboard</h1>
 
-      <div class="margin-bot-med">
-        <h2 class="margin-bot-sm">Exam List</h2>
-        <table id="examTable">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Category</th>
-              <th>State</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Exam table rows will be dynamically populated here -->
-          </tbody>
-        </table>
-        <a href="../create/html/index.html"
-          ><button id="createExamBtn">Create Exam</button></a
-        >
-      </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang chủ giáo viên</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../general.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
-      <h2 class="margin-bot-sm">User List</h2>
-      <table id="userTable">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- User table rows will be dynamically populated here -->
-        </tbody>
-      </table>
-      <button id="createUserBtn" class="margin-bot-med">Create User</button>
+<body>
+  <ul class="navbar">
+    <div class="logo-container">
+      <img class="logo" src="https://code.ptit.edu.vn/2020/images/logo_ptit.png" alt="Logo">
+    </div>
 
-      <h2 class="margin-bot-sm">Exam Statistics</h2>
-      <table id="statisticsTable">
-        <thead>
-          <tr>
-            <th>Exam</th>
-            <th>Participants</th>
-            <th>Completion %</th>
-            <th>Average Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Statistics table rows will be dynamically populated here -->
-        </tbody>
-      </table>
+    <li><a href="../create/index.html">Bài thi</a></li>
+    <li><a href="">Học sinh</a></li>
+    <li><a href="">Thống kê</a></li>
+    <li><a href="#" class="logout-btn"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
+  </ul>
 
-      <!-- Exam Modal -->
-      <div id="examModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h3>Create/Edit Exam</h3>
-          <form id="examForm">
-            <label for="examName">Name:</label>
-            <input type="text" id="examName" required /><br />
+  <div class="container">
 
-            <label for="examCategory">Category:</label>
-            <input type="text" id="examCategory" required /><br />
+    <div class="user-pf">
+      <img class="pfp" src="https://t4.ftcdn.net/jpg/03/49/49/79/360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg">
 
-            <label for="examState">State:</label>
-            <select id="examState">
-              <option value="joinAnytime">Join Anytime</option>
-              <option value="specificTime">Specific Time</option></select
-            ><br />
+      <div class="dropdown">
+        <button class="dropbtn"><span id="username">Username</span> <i class="fa fa-angle-down"></i></button>
 
-            <label for="startTime">Start Time:</label>
-            <input type="datetime-local" id="startTime" /><br />
-
-            <label for="endTime">End Time:</label>
-            <input type="datetime-local" id="endTime" /><br />
-
-            <button type="submit">Save</button>
-          </form>
+        <div class="dropdown-content">
+          <a href="#">Hồ sơ</a>
         </div>
-      </div>
 
-      <!-- User Modal -->
-      <div id="userModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h3>Create/Edit User</h3>
-          <form id="userForm">
-            <label for="userName">Name:</label>
-            <input type="text" id="userName" required /><br />
-
-            <label for="userEmail">Email:</label>
-            <input type="email" id="userEmail" required /><br />
-
-            <button type="submit">Save</button>
-          </form>
-        </div>
       </div>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+    <div class="main-content">
+      
+    </div>
+
+  </div>
+
+</body>
+
 </html>

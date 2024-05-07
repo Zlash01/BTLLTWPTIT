@@ -1,121 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../general.css" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Create Exams</title>
-  </head>
-  <body>
-    <header class="header">
-      <img
-        class="logo"
-        alt="Ptit"
-        src="https://code.ptit.edu.vn/2020/images/logo_ptit.png"
-      />
-      <nav class="main-nav">
-        <ul class="main-nav-list">
-          <li>
-            <a href="../dashboard/index.html" class="main-nav-link"
-              >Dashboard</a
-            >
-          </li>
-          <li>
-            <a href="../create/index.html" class="main-nav-link">Create</a>
-          </li>
-          <li>
-            <a href="../results/index.html" class="main-nav-link">Results</a>
-          </li>
-          <li>
-            <a href="../statistic/index.html" class="main-nav-link"
-              >Statistics</a
-            >
-          </li>
-          <li>
-            <a href="../login/index.html" class="nav-cta main-nav-link"
-              >Sign out</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
 
-    <section class="containter question__section">
-      <form action="#" class="question__main__form">
-        <input
-          class="input-field"
-          type="text"
-          id="question"
-          name="question"
-          placeholder="Enter your question here"
-          required
-        />
-        <div class="individual__question">
-          <input
-            class="input-field"
-            type="text"
-            id="ans_1"
-            name="ans_1"
-            placeholder="Enter Answer Here"
-            required
-          />
-          <label for="correct-1" class="correct">Correct Answer</label>
-          <input type="checkbox" name="correct-1" id="correct-1" value="1" />
-        </div>
-        <div class="individual__question">
-          <input
-            class="input-field"
-            type="text"
-            id="ans_2"
-            name="ans_2"
-            placeholder="Enter Answer Here"
-            required
-          />
-          <label for="correct-2" class="correct">Correct Answer</label>
-          <input type="checkbox" name="correct-2" id="correct-2" value="1" />
-        </div>
-        <div class="individual__question">
-          <input
-            class="input-field"
-            type="text"
-            id="ans_3"
-            name="ans_3"
-            placeholder="Enter Answer Here"
-            required
-          />
-          <label for="correct-3" class="correct">Correct Answer</label>
-          <input type="checkbox" name="correct-3" id="correct-3" value="1" />
-        </div>
-        <div class="individual__question">
-          <input
-            class="input-field"
-            type="text"
-            id="ans_4"
-            name="ans_4"
-            placeholder="Enter Answer Here"
-            required
-          />
-          <label for="correct-4" class="correct">Correct Answer</label>
-          <input type="checkbox" name="correct-4" id="correct-4" value="1" />
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tạo bài thi</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../general.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
-        <button type="submit" id="question__submit">Save Question</button>
-      </form>
-    </section>
-    <div class="file__import">
-      <input type="file" id="importFile" />
-      <button onclick="importQuestions()">Import Questions</button>
+<body>
+  <ul class="navbar">
+
+    <div class="logo-container">
+      <img class="logo" src="https://code.ptit.edu.vn/2020/images/logo_ptit.png" alt="Logo">
     </div>
-    <section class="ctn grid_question">
-      <!-- js content goes here -->
-    </section>
-    <div class="create_ctn">
-      <button type="button" onclick="create()" name="create" id="create">
-        Create Exams
-      </button>
+
+    <li><a class="active" href="index.html">Bài thi</a></li>
+    <li><a href="">Học sinh</a></li>
+    <li><a href="../statistic/index.html">Thống kê</a></li>
+    <li><a href="" class="logout-btn"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
+  </ul>
+
+  <div class="container">
+
+    <div class="user-pf">
+      <img class="pfp" src="https://t4.ftcdn.net/jpg/03/49/49/79/360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg">
+
+      <div class="dropdown">
+        <button class="dropbtn"><span id="username">Username</span> <i class="fa fa-angle-down"></i></button>
+        <div class="dropdown-content">
+          <a href="#">Hồ sơ</a>
+        </div>
+      </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-    <script src="script.js"></script>
-  </body>
+
+    <div class="main-content">
+      <h1>Các bài thi</h1>
+
+      <div class="search-filter">
+        <div>
+          <label for="searchInput">Tên bài thi</label>
+          <input class="search" type="text" id="searchInput" placeholder="Nhập tên"/>
+        
+          <select class="filter" id="filterState">
+            <option value="all">Tất cả</option>
+            <option value="anytime">Thời gian bất kỳ</option>
+            <option value="specific-time">Thời gian cụ thể</option>
+          </select>
+        </div>
+        
+        <a class="create-btn" href="create.html"><i class="fa fa-plus-square-o"></i> Tạo bài thi</a>
+      </div>
+
+      <div class="warp__list">
+        <div id="examsList">
+
+          <!--api thêm các test, với class là exam-card vào đây-->
+
+          <div class="exam-card">
+            <div class="exam-info">
+              <h3>Tên: Bài thi giữa kì</h3>
+              <p>Môn: CNXH</p>
+              <p>Tình trạng: chưa hoàn thành</p>
+            </div>
+            <div class="start">
+              <a href="#"><button class="start-btn" type="button">Chi tiết</button></a>
+            </div>
+          </div>
+
+          <div class="exam-card">
+            <div class="exam-info">
+              <h3>Tên: Bài thi cuối kì</h3>
+              <p>Môn: CNXH</p>
+              <p>Tình trạng: chưa hoàn thành</p>
+            </div>
+            <div class="start">
+              <a href="#"><button class="start-btn" type="button">Chi tiết</button></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
 </html>
