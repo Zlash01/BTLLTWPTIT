@@ -20,19 +20,6 @@ h1 {
   border-radius: 10px;
 }
 
-.create-btn {
-  margin-right: 20px;
-  background-color: blue;
-  color: white;
-  padding: 8px;
-  border-radius: 10px;
-}
-
-.create-btn:hover {
-  cursor: pointer;
-  background-color: rgb(0, 0, 167);
-}
-
 label {
   padding: 10px;
 }
@@ -45,6 +32,21 @@ label {
 .filter {
   font-size: 17px;
   width: 200px;
+}
+
+.create-btn {
+  margin-right: 20px;
+  background-color: blue;
+  color: white;
+  padding: 8px;
+  border-radius: 10px;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.create-btn:hover {
+  cursor: pointer;
+  background-color: rgb(0, 0, 167);
 }
 
 .warp__list {
@@ -67,12 +69,13 @@ label {
 }
 
 .start-btn {
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.74);
   color: white;
   text-decoration: none;
   border-radius: 10px;
+  border: none;
   padding: 10px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .start-btn:hover {
