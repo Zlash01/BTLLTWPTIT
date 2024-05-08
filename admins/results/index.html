@@ -1,108 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Students' Result</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="../../general.css" />
-  </head>
-  <body>
-    <header class="header margin-bot-sm">
-      <img
-        class="logo"
-        alt="Ptit"
-        src="https://code.ptit.edu.vn/2020/images/logo_ptit.png"
-      />
-      <nav class="main-nav">
-        <ul class="main-nav-list">
-          <li>
-            <a href="../dashboard/index.html" class="main-nav-link"
-              >Dashboard</a
-            >
-          </li>
-          <li>
-            <a href="../create/index.html" class="main-nav-link">Create</a>
-          </li>
-          <li>
-            <a href="../results/index.html" class="main-nav-link">Results</a>
-          </li>
-          <li>
-            <a href="../statistic/index.html" class="main-nav-link"
-              >Statistics</a
-            >
-          </li>
-          <li>
-            <a href="../login/index.html" class="nav-cta main-nav-link"
-              >Sign out</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../general.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Học sinh</title>
+</head>
 
-    <div class="container">
-      <div class="results-title">Results</div>
-      <div class="results-form">
-        <div class="searchStu">Search for</div>
-        <input type="text" placeholder="By name, student ID" class="txtInput" />
-        <button class="searchBtn">Search</button>
+<body>
+  <ul class="navbar">
+    <div class="logo-container">
+      <img class="logo" src="https://code.ptit.edu.vn/2020/images/logo_ptit.png" alt="Logo">
+    </div>
+
+    <li><a href="../create/index.html">Bài thi</a></li>
+    <li><a class="active" href="index.html">Học sinh</a></li>
+    <li><a href="../statistic/index.html">Thống kê</a></li>
+    <li><a href="" class="logout-btn"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
+  </ul>
+
+  <div class="container">
+
+    <div class="user-pf">
+      <img class="pfp" src="https://t4.ftcdn.net/jpg/03/49/49/79/360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg">
+      
+      <div class="dropdown">
+          <button class="dropbtn"><span id="username">Username</span> <i class="fa fa-angle-down"></i></button>
+          <div class="dropdown-content">
+              <a href="#">Hồ sơ</a>
+          </div>
       </div>
     </div>
 
-    <div class="results-table">
-      <table class="table">
-        <thead>
-          <tr class="danger">
-            <th style="background-color: #f8d7da">Number</th>
-            <th style="background-color: #f8d7da">Category</th>
-            <th style="background-color: #f8d7da">Score</th>
-            <th style="background-color: #f8d7da">Status</th>
-            <th style="background-color: #f8d7da">Participation Time</th>
-            <th style="background-color: #f8d7da"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Practice</td>
-            <td>10</td>
-            <td>Completed</td>
-            <td>...</td>
-            <td>
-              <a href="details.html"
-                ><button type="button" class="show-details">Details</button></a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Midterm</td>
-            <td>6</td>
-            <td>Completed</td>
-            <td>...</td>
-            <td>
-              <a href="details.html"
-                ><button type="button" class="show-details">Details</button></a
-              >
-            </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Finals</td>
-            <td>...</td>
-            <td>Incomplete</td>
-            <td>...</td>
-            <td>
-              <a href="details.html"
-                ><button type="button" class="show-details">Details</button></a
-              >
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="main-content">
+        <h1>Học sinh</h1>
+
+        <div class="search-filter">
+            <label for="searchInput">Tên bài thi</label>
+            <input class="search" type="text" id="searchInput" placeholder="Nhập tên" />
+        </div>
+
+      <div>
+        <table class="result-table">
+            <tr>
+                <th>Tên bài thi</th>
+                <th>Môn học</th>
+                <th>Thời gian làm</th>
+                <th>Số người làm</th>
+                <th>Điểm TB</th>
+                <th>Chi tiết</th>
+            </tr>
+            <tr>
+                <td>Bài giữa kì I</td>
+                <td>CNXH</td>
+                <td>90 phút</td>
+                <td>33</td>
+                <td>7.8</td>
+                <td><a class="details-btn" href="details.html"><i class="fa fa-external-link"></i></td>
+            </tr>
+        </table>
+      </div>
+        
     </div>
 
-    <script src="script.js"></script>
-  </body>
+  </div>
+
+</body>
 </html>
