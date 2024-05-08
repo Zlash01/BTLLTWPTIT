@@ -8,9 +8,11 @@ function createHeaders(token = null) {
   };
 
   if (token) {
-    headers["Authorization"] = `Bearer ${token}`; // Add Bearer token if provided
+    // headers["Authorization"] = `Bearer ${token}`; // Add Bearer token if provided
+    headers["cookie"] = `accessToken=${token}`;
   }
 
+  console.log("Headers:", headers); // Add this line to log the headers
   return headers;
 }
 
@@ -81,9 +83,3 @@ export async function apiDelete(endpoint, token = null) {
     throw error; // Re-throw the error for further handling if needed
   }
 }
-
-// Export functions for use in other parts of your application
-// module.exports = {
-//   apiGet,
-//   apiPost,
-// };
