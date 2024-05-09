@@ -1,71 +1,44 @@
-const exams = [
-  {
-    id: 1,
-    name: "Updated Exam Name",
-    join_anytime: true,
-    duration: 120,
-    description: "Updated description for the exam",
-    start_time: "2024-05-10T09:00:00.000Z",
-    end_time: "2024-05-10T11:00:00.000Z",
-    createdAt: "2024-05-02T18:11:00.000Z",
-    updatedAt: "2024-05-02T18:47:42.000Z",
-  },
-  {
-    id: 2,
-    name: "Exam 2",
-    join_anytime: true,
-    duration: 10,
-    description: "Description for Exam 2",
-    start_time: null,
-    end_time: null,
-    createdAt: "2024-05-02T18:11:29.000Z",
-    updatedAt: "2024-05-02T18:11:29.000Z",
-  },
-  {
-    id: 3,
-    name: "Updated Exam Name",
-    join_anytime: false,
-    duration: 120,
-    description: "Updated exam description.",
-    start_time: "2024-05-05T08:00:00.000Z",
-    end_time: "2024-05-05T10:00:00.000Z",
-    createdAt: "2024-05-02T18:17:02.000Z",
-    updatedAt: "2024-05-05T14:38:47.000Z",
-  },
-  {
-    id: 4,
-    name: "Math Exam",
-    join_anytime: true,
-    duration: 90,
-    description: "Test your math skills!",
-    start_time: null,
-    end_time: null,
-    createdAt: "2024-05-05T13:49:19.000Z",
-    updatedAt: "2024-05-05T13:49:19.000Z",
-  },
-];
+import { apiGet, apiPost } from "../../apiServices.js";
 
-// import { apiGet, apiPost } from "../../apiServices.js";
-// console.log(localStorage.getItem("token"));
-// let exams = apiGet("/api/exams/", localStorage.getItem("token"))
-//   .then((exam) => {
-//     exams = exam.data;
-//     count = exam.count;
-//     localStorage.setItem("count", count);
-//     console.log("Fetched exams:", exam);
-//     renderExams(exams);
-//   })
-//   .catch((error) => {
-//     console.error("Error fetching exams:", error);
-//   });
+function setDataUser() {
+  // Retrieve the JSON string from localStorage
+  const id = localStorage.getItem("userid");
+  apiGet("/api/users/current", localStorage.getItem("token")).then(
+    (response) => {
+      const name = response.name;
+      const usernameElement = document.getElementById("username");
+      usernameElement.textContent = name;
+    }
+  );
+}
+
+function getDataExams() {
+  apiGet("/api/exams/", localStorage.getItem("token"))
+    .then((response) => {
+      console.log("Exam response:", response);
+      // Check if the response is an array
+      if (Array.isArray(response)) {
+        // Store the array of exams in localStorage as a string
+        localStorage.setItem("exams", JSON.stringify(response));
+      } else {
+        console.error(
+          "Unexpected response format. Expected an array of exams."
+        );
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching exams:", error);
+    });
+}
 
 // Function to render exam cards
 function renderExams() {
+  const exams = JSON.parse(localStorage.getItem("exams"));
+
   const searchInput = document
     .getElementById("searchInput")
     .value.toLowerCase();
   const filterState = document.getElementById("filterState").value;
-  console.log(filterState);
   const filteredExams = exams.filter((exam) => {
     const nameMatch = exam.name.toLowerCase().includes(searchInput);
     const stateMatch =
@@ -123,6 +96,10 @@ function isWithinTimeRange(startTime, endTime) {
   return currentTime >= start && currentTime <= end;
 }
 
+function logout() {
+  window.location.href = "../../auth/index.html";
+}
+
 // Function to start an exam (dummy function)
 function startExam(examName) {
   window.location.href = "../../exam/html/index.html";
@@ -131,8 +108,11 @@ function startExam(examName) {
 }
 
 // Initial rendering of exams
+getDataExams();
+setDataUser();
 renderExams();
 
 // Event listeners for input changes
 document.getElementById("searchInput").addEventListener("input", renderExams);
 document.getElementById("filterState").addEventListener("change", renderExams);
+document.getElementById("logout").addEventListener("click", logout);

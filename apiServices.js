@@ -8,13 +8,21 @@ function createHeaders(token = null) {
   };
 
   if (token) {
-    // headers["Authorization"] = `Bearer ${token}`; // Add Bearer token if provided
-    headers["cookie"] = `accessToken=${token}`;
+    headers["Authorization"] = `Bearer ${token}`; // Add Bearer token if provided
   }
 
   console.log("Headers:", headers); // Add this line to log the headers
   return headers;
 }
+
+// function setTokenCookie(token) {
+//   const date = new Date();
+//   date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000); // Expires in 30 days
+//   const expires = `expires=${date.toUTCString()}`;
+//   document.cookie = `accessToken=${encodeURIComponent(
+//     token
+//   )};${expires};path=/`;
+// }
 
 // Function to handle API errors
 function handleApiError(response) {
