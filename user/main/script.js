@@ -64,8 +64,10 @@ function renderExams() {
   const searchInput = document
     .getElementById("searchInput")
     .value.toLowerCase();
+
   const filterState = document.getElementById("filterState").value;
   console.log(filterState);
+
   const filteredExams = exams.filter((exam) => {
     const nameMatch = exam.name.toLowerCase().includes(searchInput);
     const stateMatch =
@@ -73,12 +75,14 @@ function renderExams() {
       exam.join_anytime === (filterState === "anytime");
     return nameMatch && stateMatch;
   });
+
   const examsList = document.getElementById("examsList");
   examsList.innerHTML = "";
   filteredExams.forEach((exam) => {
     const examCard = document.createElement("div");
     examCard.classList.add("exam-card");
     let timeInfo = "";
+
     if (!exam.join_anytime) {
       const startDate = new Date(exam.start_time);
       const endDate = new Date(exam.end_time);
@@ -95,22 +99,27 @@ function renderExams() {
       const formattedEndTime = endDate.toLocaleString("en-US", options);
       timeInfo = `<p>Start Time: ${formattedStartTime}</p><p>End Time: ${formattedEndTime}</p>`;
     }
+
     examCard.innerHTML = `
     <div class="exam-info">
-    <h3>${exam.name}</h3>
+      <h3>${exam.name}</h3>
       <p>Description: ${exam.description}</p>
       <p>Duration: ${exam.duration} minutes</p>
       <p>State: ${exam.join_anytime ? "Join Anytime" : "Specific Time"}</p>
       ${timeInfo}
     </div>
-    ${
-      exam.join_anytime
-        ? `<button onclick="startExam('${exam.name}')">Start Exam</button>`
-        : isWithinTimeRange(exam.start_time, exam.end_time)
-        ? `<button onclick="startExam('${exam.name}')">Start Exam</button>`
-        : `<button disabled>Unavailable</button>`
-    }
-  `;
+    
+    <div class="start">
+      ${
+        exam.join_anytime
+          ? `<button class="start-btn" onclick="startExam('${exam.name}')">Start Exam</button>`
+          : isWithinTimeRange(exam.start_time, exam.end_time)
+          ? `<button class="start-btn" onclick="startExam('${exam.name}')">Start Exam</button>`
+          : `<button disabled>Unavailable</button>`
+      }
+    </div>
+    `;
+    
     examsList.appendChild(examCard);
   });
 }

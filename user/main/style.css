@@ -33,10 +33,10 @@ label {
 
 .warp__list {
   margin: 30px;
-  border: 2px solid #222;
   background-color: white;
   padding: 1.2rem;
-  border-radius: 5px;
+  border-radius: 10px;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 .exam-card {
@@ -51,10 +51,11 @@ label {
 }
 
 .start-btn {
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.74);
   color: white;
   text-decoration: none;
   border-radius: 10px;
+  border: none;
   padding: 10px;
   font-size: 16px;
 }
@@ -62,6 +63,16 @@ label {
 .start-btn:hover {
   cursor: pointer;
   background-color: #940000;
+}
+
+button:disabled {
+  background-color: rgb(128, 128, 128, 0.5);
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
 }
 
 #examsList {
