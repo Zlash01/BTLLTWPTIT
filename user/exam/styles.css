@@ -1,3 +1,8 @@
+ul {
+  list-style-type: none;
+  padding-inline-start: 0px;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -21,10 +26,37 @@ nav {
 
 .test{
   font-size: 1.2rem;
+  overflow: scroll;
 }
-
+.test .question{
+  padding: 20px;
+  border: 1px solid lightgray;
+  margin: 1rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  
+}
 .test .questions{
   font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.question ul{
+  margin-top:8px;
+  margin-bottom:0px;
+}
+.question-number{
+  position: absolute; 
+  top: -34px; 
+  left: 10px; 
+  background-color: white; 
+  padding: 0 10px; 
+  font-size: 20px; 
+  font-weight: bold; 
+}
+
+.question ul li{
+  padding:2px;
 }
 
 nav ul {
@@ -60,17 +92,24 @@ display: block;
 font-size: 23px;
 color: #f4f4f4;
 }
-
+.test-content{
+  display: grid;
+  grid-template-columns: 12fr 3fr;
+  gap: 18px;
+  overflow: hidden;
+}
 .container {
   width: 300px;
   height: 1500px; 
-  position: absolute;
+
   z-index: 889;
   top: 0;
   right: 0;
 }
 
 .sidebar {
+  display:grid;
+  grid-template-rows: 12fr 1fr;
   width: 300px; /* Adjust the width as needed */
   height: 100%;
   background-color: #f4f4f4;
@@ -86,8 +125,8 @@ color: #f4f4f4;
   display: flex;
   align-items: center;
   position: fixed;
-  margin-bottom: 20px;
-  margin-top: 2rem;
+  margin-bottom: 10px;
+  margin-top: 3rem;
 }
 
 .account-img{
@@ -102,12 +141,15 @@ color: #f4f4f4;
   height: 100%;
 }
 .submit-box {
-  margin-top: 116%; /* Push to the bottom */
+  display: flex;
   position: relative;
+  align-items: center; 
+  justify-content: center;
 }
 
 .submit-button {
-  width: 100%;
+  
+  width: 90%;
   padding: 10px;
   background-color: #4CAF50;
   color: white;
@@ -117,32 +159,38 @@ color: #f4f4f4;
   
 }
 .test {
-  display: flex;
-  position: absolute;
   margin-top: 5rem;
   margin-left: 1rem;
   z-index: 888;
-}
 
-#box-container {
-  display: grid;
-  grid-template-columns: repeat(4, 50px); /* 4 boxes per row */
-  grid-gap: 10px; /* Spacing between boxes */
+}
+.indicator-title{
   justify-content: center;
   align-items: center;
-  margin-top: 220px;
+  margin: 1rem;
+}
+.indicator-box{
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px;
+}
+#box-container {
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(5, 50px); /* 4 boxes per row */
+  grid-gap: 5px; /* Spacing between boxes */
 }
 
-.box {
-  width: 50px;
-  height: 50px;
-  background-color: lightgray;
+.indicatorButton {
+  border-radius: 4px;
+  width: 40x;
+  height: 30px;
+  background-color: white;
+  border: 1px solid lightgray;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: bold;
-  font-size: 18px;
+  font-weight: none;
+  font-size: 15px;
 }
-
-/* added #box-container*/
-/* added .box*/
