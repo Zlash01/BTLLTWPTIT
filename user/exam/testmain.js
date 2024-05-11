@@ -1,14 +1,18 @@
 var minsEl = document.getElementById("minutes");
 var secsEl = document.getElementById("seconds");
 
+var minsValue = parseInt(minsEl.textContent);
+var secsValue = parseInt(secsEl.textContent);
+
 function countdownTimer() {
-  const countDownDate = new Date().getTime() + 10 * 60 * 1000;
+  const countDownDate = new Date().getTime() + minsValue * 60 * 1000;
   const second = 1000;
   const minute = second * 60;
 
   const interval = setInterval(() => {
     const now = new Date().getTime();
     const distance = countDownDate - now;
+
     minsEl.innerText = formatNumber(Math.floor(distance / minute));
     secsEl.innerText = formatNumber(Math.floor((distance % minute) / second));
 
@@ -29,7 +33,7 @@ function countdownTimer() {
         }
       }
 
-      window.location.href = "../../results/html/index.html?score=" + score;
+      window.location.href = "../results/html/index.html?score=" + score;
     }
   }, 1000);
 }
@@ -57,32 +61,56 @@ document.getElementById("submitButton").addEventListener("click", function () {
   window.location.href = "../results/index.html?score=" + score;
 });
 
-//Generate question indicator boxes based on the number of questions 
 document.addEventListener('DOMContentLoaded', function() {
-  const testForm = document.getElementById('testForm');
+  const testForms = document.getElementsByClassName('testform');
   const boxContainer = document.getElementById('box-container');
 
-  // Get all questions and their corresponding radio buttons
-  const questions = testForm.querySelectorAll('.question');
+  // Loop through each test form (assuming there's only one)
+  Array.from(testForms).forEach(function(testForm) {
+    // Get all questions and their corresponding radio buttons within the current test form
+    const questions = testForm.querySelectorAll('.question');
 
-  // Create question indicator boxes dynamically
-  questions.forEach(function(question, index) {
-      const box = document.createElement('div');
-      box.className = 'box';
-      box.textContent = index + 1; // Display question number (1-based index)
-      boxContainer.appendChild(box);
+    // Create question indicator buttons dynamically
+    questions.forEach(function(question, index) {
+      const button = document.createElement('button');
+      button.className = 'indicatorButton';
+      button.id = 'button' + (index + 1);
+      button.textContent = index + 1; // Display question number (1-based index)
+      boxContainer.appendChild(button);
 
-      // Event listener for radio button change within each question
+      // Scroll to the corresponding question when button is clicked
+      button.addEventListener('click', function() {
+        // Get the position of the target question element
+        const targetQuestion = question; // Use the current question element directly
+      
+        if (targetQuestion) {
+          const targetQuestionPosition = targetQuestion.getBoundingClientRect().top + window.pageYOffset;
+
+          // Scroll to the target question element
+          window.scrollTo({
+            top: targetQuestionPosition - 100,
+            behavior: 'smooth' // Smooth scrolling effect
+          });
+
+        } else {
+          console.error(`Question ${index + 1} not found.`);
+        }
+      });
+
       const radioButtons = question.querySelectorAll('input[type="radio"]');
       radioButtons.forEach(function(radioButton) {
-          radioButton.addEventListener('change', function() {
-              if (this.checked) {
-                  // Change color of the corresponding box to green
-                  box.style.backgroundColor = '#4CAF50';
-              }
-          });
+        radioButton.addEventListener('change', function() {
+          
+
+          if (this.checked) {
+            // Change color of the corresponding button to green when radio button is checked
+            button.style.backgroundColor = '#4CAF50';
+          }
+        });
       });
+    });
   });
 });
+
 
 //added indcator generator
