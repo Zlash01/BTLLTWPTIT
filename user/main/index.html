@@ -42,28 +42,30 @@
             <span id="username">Username</span> <i class="fa fa-angle-down"></i>
           </button>
           <div class="dropdown-content">
-            <a href="#">Hồ sơ</a>
+            <a href="../user-pf/index.html">Hồ sơ</a>
           </div>
         </div>
       </div>
 
       <div class="main-content">
-        <h1>Các bài thi</h1>
+        <div>
+          <h1>Các bài thi</h1>
 
-        <div class="search-filter">
-          <label for="searchInput">Tên bài thi</label>
-          <input
-            class="search"
-            type="text"
-            id="searchInput"
-            placeholder="Nhập tên"
-          />
+          <div class="search-filter">
+            <label for="searchInput">Tên bài thi</label>
+            <input
+              class="search"
+              type="text"
+              id="searchInput"
+              placeholder="Nhập tên"
+            />
 
-          <select class="filter" id="filterState">
-            <option value="all">Tất cả</option>
-            <option value="anytime">Thời gian bất kỳ</option>
-            <option value="specific-time">Thời gian cụ thể</option>
-          </select>
+            <select class="filter" id="filterState">
+              <option value="all">Tất cả</option>
+              <option value="anytime">Thời gian bất kỳ</option>
+              <option value="specific-time">Thời gian cụ thể</option>
+            </select>
+          </div>
         </div>
 
         <div class="warp__list">
