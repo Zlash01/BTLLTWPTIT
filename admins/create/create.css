@@ -1,90 +1,241 @@
 .main-content {
-    background-color: rgb(236, 234, 234);
-    flex-grow: 1;
-  }
+  background-color: rgb(236, 234, 234);
+  flex: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
   
-  h1 {
-    margin-top: 30px;
-    margin-left: 30px;
-    margin-right: 10px;
-  }
+h1 {
+  margin: 10px 30px
+}
   
-  .exam-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    background-color: white;
-    margin: 30px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-radius: 10px;
-  }
-  
-  .create-btn {
-    margin-right: 20px;
-    background-color: blue;
-    color: white;
-    padding: 8px;
-    border-radius: 10px;
-    font-size: 18px;
-  }
-  
-  .create-btn:hover {
-    cursor: pointer;
-    background-color: rgb(0, 0, 167);
-  }
-  
-  label {
-    padding: 10px;
-  }
-  
-  .exam-name {
-    font-size: 16px;
-    margin-right: 30px;
-  }
-  
-  .filter {
-    font-size: 17px;
-    width: 200px;
-  }
-  
-  .warp__list {
-    margin: 30px;
-    background-color: white;
-    padding: 1.2rem;
-    border-radius: 5px;
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .exam-card {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #eee;
-    padding: 0.6rem 1.2rem;
-    border: 1px groove #111;
-    border-radius: 5px;
-  }
-  
-  .start-btn {
-    background-color: rgba(255, 0, 0, 0.74);
-    color: white;
-    text-decoration: none;
-    border-radius: 10px;
-    border: none;
-    padding: 10px;
-    font-size: 16px;
-  }
-  
-  .start-btn:hover {
-    cursor: pointer;
-    background-color: #940000;
-  }
-  
-  #examsList {
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+.exam-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  margin-right: 30px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  height: auto;
+}
+
+.info {
+  margin-bottom: 10px;
+}
+
+.info .title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.info .input {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid rgba(51, 51, 51, 0.205);
+  border-radius: 6px;
+}
+
+.exam-btns {
+  display: flex;
+  justify-content: right;
+  gap: 1rem;
+}
+
+.cancel-btn {
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 8px 10px;
+  color: red;
+  border: 1px solid red;
+  background-color: white;
+}
+
+.cancel-btn:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(252, 46, 46);
+}
+
+.save-btn {
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 8px 10px;
+  color: rgb(66, 66, 255);
+  border: 1px solid rgb(66, 66, 255);
+  background-color: white;
+}
+
+.save-btn:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(70, 70, 255);
+}
+
+.createQuestion-btn {
+  text-align: center;
+  height: auto;
+}
+
+.create-btn {
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 8px 10px;
+  margin: 10px 0;
+  color: white;
+  border: none;
+  background-color: rgb(66, 66, 255);
+}
+
+.create-btn:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(45, 45, 160);
+}
+
+/* .exam-questions {
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 10px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  flex: 1;
+} */
+
+/* .grid_question {
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 10px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  flex: 1;
+} */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #fefefe;
+  margin: 10% auto;
+  width: 30%;
+  border: 1px solid #888;
+  height: auto;
+}
+
+.close {
+  display: flex;
+  justify-content: right;
+  color: #aaa;
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.fa-close:hover {
+  cursor: pointer;
+}
+
+.create-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 26px;
+}
+
+.question__section {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.question-name {
+  margin-bottom: 20px;
+  background-color: aqua;
+}
+
+.individual__question {
+  margin-bottom: 20px;
+}
+
+.input-field {
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid rgba(51, 51, 51, 0.205);
+  border-radius: 6px;
+}
+
+.submit-btn {
+  float: right;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  padding: 8px;
+  background-color: aquamarine;
+  border: 1px solid rgba(0, 0, 0, 0.24)
+}
+
+.submit-btn:hover {
+  cursor: pointer;
+  background-color: rgb(87, 175, 146);
+}
+
+/* ---------------------answer table sections------------------------------ */
+
+.ctn {
+  background-color: #eee;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  flex: 1;
+  overflow: auto;
+}
+
+.grid_question {
+  display: grid;
+  grid-template-columns: 3fr 6fr 1fr;
+  gap: 2rem;
+}
+
+.displayed__question,
+.displayed__answer {
+  font-size: 1.4rem;
+}
+
+.displayed__answer {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.correct__ans__green {
+  color: rgb(7, 218, 7);
+  font-weight: 600;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

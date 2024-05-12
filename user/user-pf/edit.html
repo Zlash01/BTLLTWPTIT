@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chỉnh sửa hồ sơ</title>
+    <link rel="stylesheet" href="edit.css" />
+    <link rel="stylesheet" href="../../general.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <ul class="navbar">
+      <div class="logo-container">
+        <img
+          class="logo"
+          src="https://code.ptit.edu.vn/2020/images/logo_ptit.png"
+          alt="Logo"
+        />
+      </div>
+
+      <li><a href="index.html">Bài thi</a></li>
+      <li><a href="../results/results.html">Kết quả</a></li>
+      <li>
+        <a href="#" class="logout-btn"
+          ><i class="fa fa-sign-out"></i> Đăng xuất</a
+        >
+      </li>
+    </ul>
+
+    <div class="container">
+        <div class="user-pf">
+            <img
+            class="pfp"
+            src="https://t4.ftcdn.net/jpg/03/49/49/79/360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg"
+            />
+
+            <div class="dropdown">
+            <button class="dropbtn">
+                <span id="username">Username</span> <i class="fa fa-angle-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="index.html">Hồ sơ</a>
+            </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="avatar-container">
+                <img class="avatar" src="https://t4.ftcdn.net/jpg/03/49/49/79/360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg"/>
+                <div class="username" id="name">Username</div>
+                <div class="role" id="role">Học sinh</div>
+                <div>
+                  <button class="update-btn">Thay đổi ảnh</button>
+                </div>
+            </div>
+
+            <div class="info-container">
+                <h1>Thông tin người dùng</h1>
+                
+                <div class="info">
+                   <div class="info-title">Tên</div>
+                   <input type="text" class="input" placeholder="Username">
+                   <div class="info-title">Mã SV</div>
+                   <input type="text" class="input" placeholder="B21DCDT000">
+                   <div class="info-title">Lớp</div>
+                   <input type="text" class="input" placeholder="E21CQCN02">
+                   <div class="info-title">Email</div>
+                   <input type="text" class="input" placeholder="user@gmail.com">
+                </div>
+
+                <div class="btn-container">
+                    <button class="cancel-btn">Hủy bỏ</button>
+                    <button class="save-btn">Lưu thay đổi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
