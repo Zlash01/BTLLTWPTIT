@@ -68,7 +68,7 @@ label {
   border-radius: 5px;
 }
 
-.start-btn {
+.details-btn {
   background-color: rgba(255, 0, 0, 0.74);
   color: white;
   text-decoration: none;
@@ -78,7 +78,7 @@ label {
   font-size: 18px;
 }
 
-.start-btn:hover {
+.details-btn:hover {
   cursor: pointer;
   background-color: #940000;
 }

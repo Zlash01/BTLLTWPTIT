@@ -35,7 +35,7 @@ function getDataExams() {
 function startExam(examId) {
   localStorage.setItem("exam_id", examId);
   alert(`Starting ${examId}...`);
-  //window.location.href = "../../exam/html/index.html";
+  window.location.href = "http://127.0.0.1:5500/user/exam/index.html";
 }
 
 // Function to render exam cards

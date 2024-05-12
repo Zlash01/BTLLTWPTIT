@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="exam-details.css" />
+    <link rel="stylesheet" href="../../general.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Kết quả</title>
+  </head>
+
+  <body>
+    <ul class="navbar">
+      <div class="logo-container">
+        <img
+          class="logo"
+          src="https://code.ptit.edu.vn/2020/images/logo_ptit.png"
+          alt="Logo"
+        />
+      </div>
+
+      <li><a class="active" href="index.html">Bài thi</a></li>
+      <li><a href="../results/index.html">Học sinh</a></li>
+      <li><a href="../statistic/index.html">Thống kê</a></li>
+      <li>
+        <a id="logout" class="logout-btn"
+          ><i class="fa fa-sign-out"></i> Đăng xuất</a
+        >
+      </li>
+    </ul>
+
+    <div class="container">
+      <div class="user-pf">
+        <a class="back-btn" href="../dashboard/index.html"
+          ><i class="fa fa-chevron-left"></i> Quay lại</a
+        >
+
+        <div style="display: flex; align-items: center">
+          <img
+            class="pfp"
+            src="https://t4.ftcdn.net/jpg/03/49/49/79/360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg"
+          />
+
+          <div class="dropdown">
+            <button class="dropbtn">
+              <span id="username">Username</span>
+              <i class="fa fa-angle-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Hồ sơ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <h1>Exam Details</h1>
+
+        <div class="exam-info">
+          <p>
+            <strong>Exam Name:</strong> <span id="exam-title">Exam Title</span>
+          </p>
+          <p>
+            <strong>Description:</strong>
+            <span id="exam-description">Exam Description</span>
+          </p>
+          <p>
+            <strong>Number of Questions:</strong>
+            <span id="num-questions">10</span>
+          </p>
+          <p>
+            <strong>Duration:</strong>
+            <span id="duration">10</span>
+          </p>
+        </div>
+        <div class="exam-actions">
+          <a href="#" class="edit-btn"
+            ><i class="fa fa-pencil"></i> Edit Exam</a
+          >
+          <a href="#" class="delete-exam-btn">Delete Exam</a>
+        </div>
+        <div class="question-list-container">
+          <div id="question-list">
+            <!-- Add questions and answers here -->
+          
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
