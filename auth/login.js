@@ -19,6 +19,13 @@ function handleLoginBackend(loginUsername, loginPassword) {
     .then((response) => {
       localStorage.setItem("token", response.accessToken);
       localStorage.setItem("role", response.role);
+
+      // Serialize the object to a JSON string
+      const jsonString = JSON.stringify(response.id);
+
+      // Store the JSON string in localStorage
+      localStorage.setItem("userid", jsonString);
+
       alert("Đăng nhập thành công");
       navigate();
     })
