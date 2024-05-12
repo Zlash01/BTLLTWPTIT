@@ -17,8 +17,8 @@
       <img class="logo" src="https://code.ptit.edu.vn/2020/images/logo_ptit.png" alt="Logo">
     </div>
 
-    <li><a class="active" href="index.html">Bài thi</a></li>
-    <li><a href="">Học sinh</a></li>
+    <li><a class="active" href="../dashboard/index.html">Bài thi</a></li>
+    <li><a href="../results/index.html">Học sinh</a></li>
     <li><a href="../statistic/index.html">Thống kê</a></li>
     <li><a href="" class="logout-btn"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
   </ul>
@@ -39,25 +39,130 @@
     <div class="main-content">
       <h1>Tạo bài thi</h1>
 
-      <div class="exam-info">
-        <div class="exam-name">
-          <label for="searchInput">Tên bài thi</label>
-          <input type="text" id="searchInput" placeholder="Nhập tên" />
+      <form id="examForm" class="exam-info">
+        <div class="info">
+          <!-- <div class="title">Tên bài thi</div>
+          <input type="text" class="input" >
+          <div class="title">Giới thiệu</div>
+          <input type="text" class="input" placeholder="Chú thích">
+          <div class="title">Thời gian làm bài</div>
+          <input type="number" class="input" placeholder="Thời gian"> -->
+
+          <label class="title" for="examName">Tên</label><br/>
+          <input type="text" class="input" id="examName" placeholder="Tên bài thi" required/><br/>
+
+          <label class="title" for="examDescription">Giới thiệu</label><br/>
+          <input type="text" class="input" id="examDescription" placeholder="Chú thích" required/><br/>
+
+          <label class="title" for="examDuration">Thời gian làm bài</label><br/>
+          <input type="number" class="input" id="examDuration" placeholder="Thời gian" required/><br/>
         </div>
-        <div class="exam-type">
-          <label for="searchInput">Loại bài thi</label>
-          <input type="text" id="searchInput" placeholder="Nhập loại" />
+
+        <div class="exam-btns">
+          <button type="button" class="cancel-btn">Hủy bỏ</button>
+          <button type="submit" class="save-btn">Tạo bài thi</button>
         </div>
+      </form>
+
+      <div class="createQuestion-btn">
+        <button class="create-btn" onclick="openExamModal()">Tạo câu hỏi</button>
       </div>
 
-      <div class="warp__list">
-        <div id="examsList">
-            
-        </div>
-      </div>
+      <!-- <div class="exam-questions">
+
+      </div> -->
+
+      <section class="ctn grid_question">
+        <!-- js content goes here -->
+      </section>
+
     </div>
 
   </div>
+
+  <div id="examModal" class="modal">
+    <div class="modal-content">
+      <div class="close">
+        <i onclick="closeModal()" class="fa fa-close"></i>
+      </div>
+
+      <p class="create-title">Create question</p>
+
+      <section class="containter1 question__section">
+        <form action="#" class="question__main__form">
+          <input
+            class="question-name input-field"
+            type="text"
+            id="question"
+            name="question"
+            placeholder="Enter your question here"
+            required
+          />
+
+          <div class="individual__question">
+            <input
+              class="input-field"
+              type="text"
+              id="ans_1"
+              name="ans_1"
+              placeholder="Enter Answer Here"
+              required
+            /><br>
+
+            <label for="correct-1" class="correct">Correct Answer</label>
+            <input type="checkbox" name="correct-1" id="correct-1" value="1" />
+          </div>
+
+          <div class="individual__question">
+            <input
+              class="input-field"
+              type="text"
+              id="ans_2"
+              name="ans_2"
+              placeholder="Enter Answer Here"
+              required
+            /><br>
+
+            <label for="correct-2" class="correct">Correct Answer</label>
+            <input type="checkbox" name="correct-2" id="correct-2" value="1" />
+          </div>
+
+          <div class="individual__question">
+            <input
+              class="input-field"
+              type="text"
+              id="ans_3"
+              name="ans_3"
+              placeholder="Enter Answer Here"
+              required
+            /><br>
+
+            <label for="correct-3" class="correct">Correct Answer</label>
+            <input type="checkbox" name="correct-3" id="correct-3" value="1" />
+          </div>
+
+          <div class="individual__question">
+            <input
+              class="input-field"
+              type="text"
+              id="ans_4"
+              name="ans_4"
+              placeholder="Enter Answer Here"
+              required
+            /><br>
+            
+            <label for="correct-4" class="correct">Correct Answer</label>
+            <input type="checkbox" name="correct-4" id="correct-4" value="1" />
+          </div>
+  
+          <button type="submit" class="submit-btn" id="question__submit">Save Question</button>
+        </form>
+      </section>
+      
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 
 </body>
 

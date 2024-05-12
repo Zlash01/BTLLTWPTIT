@@ -72,10 +72,6 @@ h1 {
     border-bottom: 1px solid rgba(51, 51, 51, 0.205);
 }
 
-.info {
-    padding-right: 40px;
-}
-
 .info-title {
     font-weight: bold;
     font-size: 24px;
@@ -88,6 +84,7 @@ h1 {
     font-size: 16px;
     border: 1px solid rgba(51, 51, 51, 0.205);
     border-radius: 6px;
+    box-sizing: border-box;
     width: 100%;
 }
 
