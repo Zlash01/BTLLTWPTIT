@@ -1,10 +1,6 @@
 .main-content {
   background-color: rgb(236, 234, 234);
-  flex: 1;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
+  flex-grow: 1;
 }
 
 h1 {
@@ -16,15 +12,11 @@ h1 {
 .filters {
   display: flex;
   align-items: center;
-  margin: 0 30px;
+  margin: 30px;
   padding-top: 20px;
   padding-bottom: 20px;
   border-radius: 10px;
   background-color: white;
-}
-
-.filter {
-  border-radius: 3px;
 }
 
 .filters label {
@@ -41,13 +33,9 @@ h1 {
 }
 
 .res__table {
+  box-sizing: border-box;
   margin: 30px;
-  background-color: white;
-  padding: 1.2rem;
   border-radius: 10px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-  flex: 1;
-  overflow: auto;
 }
 
 table {
@@ -60,4 +48,12 @@ th, td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
+}
+#chart-container {
+  margin: 5px auto 0;
+  width: 65%;
+  height: 400px; 
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
 }
