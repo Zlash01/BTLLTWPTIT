@@ -11,7 +11,7 @@ function createHeaders(token = null) {
     headers["Authorization"] = `Bearer ${token}`; // Add Bearer token if provided
   }
 
-  console.log("Headers:", headers); // Add this line to log the headers
+  //console.log("Headers:", headers); // Add this line to log the headers
   return headers;
 }
 

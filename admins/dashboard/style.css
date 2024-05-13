@@ -74,9 +74,10 @@ label {
   padding: 0.6rem 1.2rem;
   border: 1px groove #111;
   border-radius: 5px;
+  margin-bottom: 1.5rem;
 }
 
-.start-btn {
+.details-btn {
   background-color: rgba(255, 0, 0, 0.74);
   color: white;
   text-decoration: none;
@@ -86,12 +87,12 @@ label {
   font-size: 18px;
 }
 
-.start-btn:hover {
+.details-btn:hover {
   cursor: pointer;
   background-color: #940000;
 }
 
-#examContainer {
+#examList {
   font-size: 20px;
   display: flex;
   flex-direction: column;

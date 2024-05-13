@@ -31,14 +31,19 @@ function getDataExams() {
     });
 }
 
+// Function to start an exam (dummy function)
+function startExam(examId) {
+  localStorage.setItem("exam_id", examId);
+  alert(`Starting ${examId}...`);
+  window.location.href = "http://127.0.0.1:5500/user/exam/index.html";
+}
+
 // Function to render exam cards
 function renderExams() {
   const exams = JSON.parse(localStorage.getItem("exams"));
-
   const searchInput = document
     .getElementById("searchInput")
     .value.toLowerCase();
-
   const filterState = document.getElementById("filterState").value;
   const filteredExams = exams.filter((exam) => {
     const nameMatch = exam.name.toLowerCase().includes(searchInput);
@@ -47,14 +52,13 @@ function renderExams() {
       exam.join_anytime === (filterState === "anytime");
     return nameMatch && stateMatch;
   });
-
   const examsList = document.getElementById("examsList");
   examsList.innerHTML = "";
   filteredExams.forEach((exam) => {
+    console.log(exam.id);
     const examCard = document.createElement("div");
     examCard.classList.add("exam-card");
     let timeInfo = "";
-
     if (!exam.join_anytime) {
       const startDate = new Date(exam.start_time);
       const endDate = new Date(exam.end_time);
@@ -71,28 +75,34 @@ function renderExams() {
       const formattedEndTime = endDate.toLocaleString("en-US", options);
       timeInfo = `<p>Start Time: ${formattedStartTime}</p><p>End Time: ${formattedEndTime}</p>`;
     }
-
     examCard.innerHTML = `
-    <div class="exam-info">
-      <h3>${exam.name}</h3>
-      <p>Description: ${exam.description}</p>
-      <p>Duration: ${exam.duration} minutes</p>
-      <p>State: ${exam.join_anytime ? "Join Anytime" : "Specific Time"}</p>
-      ${timeInfo}
-    </div>
-    
-    <div class="start">
-      ${
-        exam.join_anytime
-          ? `<button class="start-btn" onclick="startExam('${exam.name}')">Start Exam</button>`
-          : isWithinTimeRange(exam.start_time, exam.end_time)
-          ? `<button class="start-btn" onclick="startExam('${exam.name}')">Start Exam</button>`
-          : `<button disabled>Unavailable</button>`
-      }
-    </div>
+      <div class="exam-info">
+        <h3>${exam.name}</h3>
+        <p>Description: ${exam.description}</p>
+        <p>Duration: ${exam.duration} minutes</p>
+        <p>State: ${exam.join_anytime ? "Join Anytime" : "Specific Time"}</p>
+        ${timeInfo}
+      </div>
+      <div class="start">
+        ${
+          exam.join_anytime
+            ? `<button class="start-btn" data-exam-id="${exam.id}">Start Exam</button>`
+            : isWithinTimeRange(exam.start_time, exam.end_time)
+            ? `<button class="start-btn" data-exam-id="${exam.id}">Start Exam</button>`
+            : `<button disabled>Unavailable</button>`
+        }
+      </div>
     `;
-
     examsList.appendChild(examCard);
+  });
+
+  // Add event listener after rendering exams
+  const startButtons = document.querySelectorAll(".start-btn");
+  startButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const examId = button.dataset.examId;
+      startExam(examId);
+    });
   });
 }
 
@@ -106,13 +116,6 @@ function isWithinTimeRange(startTime, endTime) {
 
 function logout() {
   window.location.href = "../../auth/index.html";
-}
-
-// Function to start an exam (dummy function)
-function startExam(examName) {
-  window.location.href = "../../exam/html/index.html";
-  alert(`Starting ${examName}...`);
-  // Implement your logic to start the exam
 }
 
 // Initial rendering of exams
