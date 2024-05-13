@@ -28,6 +28,7 @@ label {
 .search{
   font-size: 16px;
   margin-right: 30px;
+  border-radius: 3px;
 }
 
 .result-container {

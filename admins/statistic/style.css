@@ -23,6 +23,10 @@ h1 {
   background-color: white;
 }
 
+.filter {
+  border-radius: 3px;
+}
+
 .filters label {
   padding: 10px;
 }
