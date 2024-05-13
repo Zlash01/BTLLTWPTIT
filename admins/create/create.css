@@ -160,6 +160,9 @@ h1 {
 /* ---------------------answer table sections------------------------------ */
 
 .ctn-question {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   background-color: white;
   margin: 1.5rem;
   padding: 20px;
@@ -204,6 +207,7 @@ h1 {
 
 .edit-btn:hover {
   background-color: #e0e0e0;
+  cursor: pointer;
 }
 
 .delete-exam-btn {
@@ -212,7 +216,8 @@ h1 {
 }
 
 .delete-exam-btn:hover {
-  background-color: #c82333;
+  background-color: #b6202f;
+  cursor: pointer;
 }
 
 /* genquestion end */
