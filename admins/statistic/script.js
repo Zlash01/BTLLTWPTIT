@@ -61,19 +61,6 @@ const studentResults = [
   },
 ];
 
-import { apiGet } from "../../apiServices.js";
-let data = null;
-function getDataStatistic() {
-  // Retrieve the JSON string from localStorage
-  apiGet("/api/participations/statistic", localStorage.getItem("token")).then(
-    (response) => {
-      data = response.data;
-      console.log(data);
-      renderTableRows(data);
-    }
-  );
-}
-
 // Populate exam filter options
 const examFilter = document.getElementById("exam-filter");
 const uniqueExams = [...new Set(studentResults.map((result) => result.exam))];
@@ -84,11 +71,6 @@ uniqueExams.forEach((exam) => {
   examFilter.appendChild(option);
 });
 
-// hiển thị ngày theo dạng dd-mm-yyy
-function convertDateFormat(dateStr) {
-  return new Date(dateStr).toLocaleDateString();
-}
-
 // Render table rows
 function renderTableRows(filteredResults) {
   const tableBody = document.querySelector("#results-table tbody");
@@ -98,40 +80,28 @@ function renderTableRows(filteredResults) {
     const row = document.createElement("tr");
 
     const nameCell = document.createElement("td");
-    nameCell.textContent = result.user.name;
+    nameCell.textContent = result.name;
     row.appendChild(nameCell);
 
     const examCell = document.createElement("td");
-    examCell.textContent = result.exam.name;
+    examCell.textContent = result.exam;
     row.appendChild(examCell);
 
-    const startTimeCell = document.createElement("td");
-    startTimeCell.textContent = convertDateFormat(result.start_time);
-    row.appendChild(startTimeCell);
+    const entriesCell = document.createElement("td");
+    entriesCell.textContent = result.entries;
+    row.appendChild(entriesCell);
 
-    const endTimeCell = document.createElement("td");
-    endTimeCell.textContent = convertDateFormat(result.end_time);
-    row.appendChild(endTimeCell);
+    const completionCell = document.createElement("td");
+    completionCell.textContent = `${result.completionPercentage}%`;
+    row.appendChild(completionCell);
 
-    const scoreCell = document.createElement("td");
-    scoreCell.textContent = result.score;
-    row.appendChild(scoreCell);
+    const avgPointCell = document.createElement("td");
+    avgPointCell.textContent = result.avgPoint;
+    row.appendChild(avgPointCell);
 
-    // const entriesCell = document.createElement("td");
-    // entriesCell.textContent = result.entries;
-    // row.appendChild(entriesCell);
-
-    // const completionCell = document.createElement("td");
-    // completionCell.textContent = `${result.completionPercentage}%`;
-    // row.appendChild(completionCell);
-
-    // const avgPointCell = document.createElement("td");
-    // avgPointCell.textContent = result.avgPoint;
-    // row.appendChild(avgPointCell);
-
-    // const pointsCell = document.createElement("td");
-    // pointsCell.textContent = result.points.join(", ");
-    // row.appendChild(pointsCell);
+    const pointsCell = document.createElement("td");
+    pointsCell.textContent = result.points.join(", ");
+    row.appendChild(pointsCell);
 
     tableBody.appendChild(row);
   });
@@ -139,33 +109,27 @@ function renderTableRows(filteredResults) {
 
 // Filter results based on selected exam and date
 function filterResults() {
-  const selectedExam = document.getElementById("exam-filter").value;
+  const selectedExam = examFilter.value;
   const selectedDate = document.getElementById("date-filter").value;
 
-  let filteredResults = data;
+  let filteredResults = studentResults;
 
   if (selectedExam) {
     filteredResults = filteredResults.filter(
-      (result) => result.exam.name === selectedExam
+      (result) => result.exam === selectedExam
     );
   }
 
   if (selectedDate) {
-    const examDate = convertDateFormat(selectedDate);
-
-    console.log(examDate);
-    // filteredResults = filteredResults.filter((result) => {
-    //   //const exam = exams.find((e) => e.name === result.exam);
-    //   // if (exam.state === "specificTime") {
-    //   //   const examStartDate = new Date(exam.startTime);
-    //   //   const examEndDate = new Date(exam.endTime);
-    //   //   return examDate >= examStartDate && examDate <= examEndDate;
-    //   // }
-    //   // return true;
-    // });
+    const examDate = new Date(selectedDate);
     filteredResults = filteredResults.filter((result) => {
-      let startTimeData = convertDateFormat(result.start_time);
-      return startTimeData === examDate; // Return the result of the comparison
+      const exam = exams.find((e) => e.name === result.exam);
+      if (exam.state === "specificTime") {
+        const examStartDate = new Date(exam.startTime);
+        const examEndDate = new Date(exam.endTime);
+        return examDate >= examStartDate && examDate <= examEndDate;
+      }
+      return true;
     });
   }
 
@@ -173,28 +137,88 @@ function filterResults() {
 }
 
 // Initial table render
-//renderTableRows(studentResults);
-getDataStatistic();
+renderTableRows(studentResults);
 
 // Event listeners
-// examFilter.addEventListener("change", filterResults);
-// document
-//   .getElementById("date-filter")
-//   .addEventListener("change", filterResults);
+examFilter.addEventListener("change", filterResults);
+document
+  .getElementById("date-filter")
+  .addEventListener("change", filterResults);
 
 // Export to PDF
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("export-btn").addEventListener("click", () => {
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('export-btn').addEventListener('click', () => {
     const doc = new jspdf.jsPDF();
 
-    if (typeof doc.autoTable !== "undefined") {
-      const table = document.getElementById("results-table");
+    if (typeof doc.autoTable !== 'undefined') {
+      const table = document.getElementById('results-table');
       doc.autoTable({ html: table });
-      doc.save("student-results.pdf");
+      doc.save('student-results.pdf');
     } else {
-      console.error("jspdf-autotable plugin is not loaded correctly.");
+      console.error('jspdf-autotable plugin is not loaded correctly.');
     }
   });
 });
+const ctx = document.getElementById('myChart').getContext('2d');
 
-window.filterResults = filterResults;
+// Chuẩn bị dữ liệu cho biểu đồ
+const labels = studentResults.map(result => result.name);
+const data = {
+  labels: labels,
+  datasets: [
+    {
+      label: 'Điểm trung bình',
+      data: studentResults.map(result => result.avgPoint),
+      backgroundColor: 'rgba(255, 99, 132, 0.5)', // Màu nền cột biểu đồ
+      borderColor: 'rgba(255, 99, 132, 1)', // Màu viền cột biểu đồ
+      borderWidth: 1
+    }
+  ]
+};
+
+// Tạo biểu đồ cột
+const myChart = new Chart(ctx, {
+  type: 'bar',
+  data: data,
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 10,
+        ticks: {
+          font: {
+            size: 12,
+            color: 'rgba(255, 99, 132, 1)' // Màu phông chữ trục y
+          }
+        },
+        grid: {
+          color: 'rgba(255, 99, 132, 0.2)' // Màu đường lưới trục y
+        }
+      },
+      x: {
+        ticks: {
+          font: {
+            size: 14,
+            color: 'rgba(255, 99, 132, 1)' // Màu phông chữ trục x
+          }
+        },
+        grid: {
+          color: 'rgba(255, 99, 132, 0.2)' // Màu đường lưới trục x
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          font: {
+            size: 15,
+            color: 'rgba(255, 99, 132, 1)' // Màu phông chữ hộp thoại chú giải
+          }
+        }
+      }
+    }
+  }
+});
