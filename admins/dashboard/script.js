@@ -116,3 +116,9 @@ renderExams();
 document.getElementById("searchInput").addEventListener("input", renderExams);
 document.getElementById("filterState").addEventListener("change", renderExams);
 document.getElementById("logout").addEventListener("click", logout);
+
+window.onload = function () {
+  setDataUser();
+  getDataExams();
+  renderExams();
+};

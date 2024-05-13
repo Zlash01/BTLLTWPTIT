@@ -1,4 +1,4 @@
-import { apiGet, apiPost } from "../../apiServices.js";
+import { apiGet, apiPost, apiDelete } from "../../apiServices.js";
 
 function setDataUser() {
   // Retrieve the JSON string from localStorage
@@ -134,4 +134,17 @@ function logout() {
   window.location.href = "../../auth/index.html";
 }
 
+function DeleteCurrent() {
+  const exam_id = localStorage.getItem("exam_id");
+  apiDelete(`/api/exams/${exam_id}`, localStorage.getItem("token"))
+    .then((response) => {
+      alert("Delete Sucessfully!");
+      window.location.href = `../dashboard/index.html?reload=${Math.random()}`;
+    })
+    .catch((error) => {
+      console.log("error: ", error);
+    });
+}
+
 document.getElementById("logout").addEventListener("click", logout);
+document.getElementById("delete").addEventListener("click", DeleteCurrent);

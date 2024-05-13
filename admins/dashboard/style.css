@@ -66,6 +66,7 @@ label {
   padding: 0.6rem 1.2rem;
   border: 1px groove #111;
   border-radius: 5px;
+  margin-bottom: 1.5rem;
 }
 
 .details-btn {
@@ -83,7 +84,7 @@ label {
   background-color: #940000;
 }
 
-#examContainer {
+#examList {
   font-size: 20px;
   display: flex;
   flex-direction: column;

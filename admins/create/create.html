@@ -1,169 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tạo bài thi</title>
+    <link rel="stylesheet" href="create.css" />
+    <link rel="stylesheet" href="../../general.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tạo bài thi</title>
-  <link rel="stylesheet" href="create.css">
-  <link rel="stylesheet" href="../../general.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+  <body>
+    <ul class="navbar">
+      <div class="logo-container">
+        <img
+          class="logo"
+          src="https://code.ptit.edu.vn/2020/images/logo_ptit.png"
+          alt="Logo"
+        />
+      </div>
 
-<body>
-  <ul class="navbar">
+      <li><a class="active" href="../dashboard/index.html">Bài thi</a></li>
+      <li><a href="../results/index.html">Học sinh</a></li>
+      <li><a href="../statistic/index.html">Thống kê</a></li>
+      <li>
+        <a href="" class="logout-btn"
+          ><i class="fa fa-sign-out"></i> Đăng xuất</a
+        >
+      </li>
+    </ul>
 
-    <div class="logo-container">
-      <img class="logo" src="https://code.ptit.edu.vn/2020/images/logo_ptit.png" alt="Logo">
-    </div>
+    <div class="container">
+      <div class="user-pf">
+        <img
+          class="pfp"
+          src="https://t4.ftcdn.net/jpg/03/49/49/79/360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg"
+        />
 
-    <li><a class="active" href="../dashboard/index.html">Bài thi</a></li>
-    <li><a href="../results/index.html">Học sinh</a></li>
-    <li><a href="../statistic/index.html">Thống kê</a></li>
-    <li><a href="" class="logout-btn"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
-  </ul>
-
-  <div class="container">
-
-    <div class="user-pf">
-      <img class="pfp" src="https://t4.ftcdn.net/jpg/03/49/49/79/360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg">
-
-      <div class="dropdown">
-        <button class="dropbtn"><span id="username">Username</span> <i class="fa fa-angle-down"></i></button>
-        <div class="dropdown-content">
-          <a href="#">Hồ sơ</a>
+        <div class="dropdown">
+          <button class="dropbtn">
+            <span id="username">Username</span> <i class="fa fa-angle-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Hồ sơ</a>
+          </div>
         </div>
+      </div>
+
+      <div class="main-content">
+        <h1>Tạo bài thi</h1>
+        <div class="create-title-container">
+          <form id="examForm" class="exam-info">
+            <div class="info">
+              <label class="title" for="examName">Tên</label><br />
+              <input
+                type="text"
+                class="input"
+                id="examName"
+                placeholder="Tên bài thi"
+                required
+              /><br />
+
+              <label class="title" for="examDescription">Giới thiệu</label
+              ><br />
+              <input
+                type="text"
+                class="input"
+                id="examDescription"
+                placeholder="Chú thích"
+                required
+              /><br />
+
+              <label class="title" for="examDuration"
+                >Thời gian làm bài (phút)</label
+              ><br />
+              <input
+                type="number"
+                class="input"
+                id="examDuration"
+                placeholder="Thời gian"
+                required
+              /><br />
+
+              <input type="checkbox" id="joinAnytime" />
+              <label class="title" for="joinAnytime">Có thời gian cụ thể</label
+              ><br />
+
+              <div id="timeFields">
+                <label class="title" for="startTime">Thời gian bắt đầu</label
+                ><br />
+                <input
+                  type="datetime-local"
+                  class="input"
+                  id="startTime"
+                  disabled
+                /><br />
+
+                <label class="title" for="endTime">Thời gian kết thúc</label
+                ><br />
+                <input
+                  type="datetime-local"
+                  class="input"
+                  id="endTime"
+                  disabled
+                /><br />
+              </div>
+              <button type="button" class="create-exam" id="create-exam">
+                Save
+              </button>
+            </div>
+          </form>
+          <div class="create-question">
+            <section class="containter1 question__section">
+              <form action="#" class="question__main__form">
+                <input
+                  class="question-name input-field"
+                  type="text"
+                  id="question"
+                  name="question"
+                  placeholder="Enter your question here"
+                  required
+                />
+                <div class="individual__question">
+                  <input
+                    class="input-field"
+                    type="text"
+                    id="ans_1"
+                    name="ans_1"
+                    placeholder="Enter Answer Here"
+                    required
+                  /><br />
+                  <label for="correct-1" class="correct">Correct Answer</label>
+                  <input type="radio" name="correct" id="correct-1" value="1" />
+                </div>
+                <div class="individual__question">
+                  <input
+                    class="input-field"
+                    type="text"
+                    id="ans_2"
+                    name="ans_2"
+                    placeholder="Enter Answer Here"
+                    required
+                  /><br />
+                  <label for="correct-2" class="correct">Correct Answer</label>
+                  <input type="radio" name="correct" id="correct-2" value="2" />
+                </div>
+                <div class="individual__question">
+                  <input
+                    class="input-field"
+                    type="text"
+                    id="ans_3"
+                    name="ans_3"
+                    placeholder="Enter Answer Here"
+                    required
+                  /><br />
+                  <label for="correct-3" class="correct">Correct Answer</label>
+                  <input type="radio" name="correct" id="correct-3" value="3" />
+                </div>
+                <div class="individual__question">
+                  <input
+                    class="input-field"
+                    type="text"
+                    id="ans_4"
+                    name="ans_4"
+                    placeholder="Enter Answer Here"
+                    required
+                  /><br />
+                  <label for="correct-4" class="correct">Correct Answer</label>
+                  <input type="radio" name="correct" id="correct-4" value="4" />
+                </div>
+                <button type="button" class="submit-btn" id="question__submit">
+                  Save Question
+                </button>
+              </form>
+            </section>
+          </div>
+        </div>
+
+        <section class="ctn-question">
+          <div class="questionContainer">
+            <div class="question-flex">
+              <p class="question">example question</p>
+              <p class="answer true">example</p>
+              <p class="answer false">incorrect answer 1</p>
+              <p class="answer false">incorrect answer 2</p>
+              <p class="answer false">incorrect answer 3</p>
+            </div>
+            <div class="exam-actions">
+              <a href="#" class="edit-btn"
+                ><i class="fa fa-pencil"></i> Edit Question</a
+              >
+              <a id="delete" class="delete-exam-btn">Delete Question</a>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
 
-    <div class="main-content">
-      <h1>Tạo bài thi</h1>
-
-      <form id="examForm" class="exam-info">
-        <div class="info">
-          <!-- <div class="title">Tên bài thi</div>
-          <input type="text" class="input" >
-          <div class="title">Giới thiệu</div>
-          <input type="text" class="input" placeholder="Chú thích">
-          <div class="title">Thời gian làm bài</div>
-          <input type="number" class="input" placeholder="Thời gian"> -->
-
-          <label class="title" for="examName">Tên</label><br/>
-          <input type="text" class="input" id="examName" placeholder="Tên bài thi" required/><br/>
-
-          <label class="title" for="examDescription">Giới thiệu</label><br/>
-          <input type="text" class="input" id="examDescription" placeholder="Chú thích" required/><br/>
-
-          <label class="title" for="examDuration">Thời gian làm bài</label><br/>
-          <input type="number" class="input" id="examDuration" placeholder="Thời gian" required/><br/>
-        </div>
-
-        <div class="exam-btns">
-          <button type="button" class="cancel-btn">Hủy bỏ</button>
-          <button type="submit" class="save-btn">Tạo bài thi</button>
-        </div>
-      </form>
-
-      <div class="createQuestion-btn">
-        <button class="create-btn" onclick="openExamModal()">Tạo câu hỏi</button>
-      </div>
-
-      <!-- <div class="exam-questions">
-
-      </div> -->
-
-      <section class="ctn grid_question">
-        <!-- js content goes here -->
-      </section>
-
-    </div>
-
-  </div>
-
-  <div id="examModal" class="modal">
-    <div class="modal-content">
-      <div class="close">
-        <i onclick="closeModal()" class="fa fa-close"></i>
-      </div>
-
-      <p class="create-title">Create question</p>
-
-      <section class="containter1 question__section">
-        <form action="#" class="question__main__form">
-          <input
-            class="question-name input-field"
-            type="text"
-            id="question"
-            name="question"
-            placeholder="Enter your question here"
-            required
-          />
-
-          <div class="individual__question">
-            <input
-              class="input-field"
-              type="text"
-              id="ans_1"
-              name="ans_1"
-              placeholder="Enter Answer Here"
-              required
-            /><br>
-
-            <label for="correct-1" class="correct">Correct Answer</label>
-            <input type="checkbox" name="correct-1" id="correct-1" value="1" />
-          </div>
-
-          <div class="individual__question">
-            <input
-              class="input-field"
-              type="text"
-              id="ans_2"
-              name="ans_2"
-              placeholder="Enter Answer Here"
-              required
-            /><br>
-
-            <label for="correct-2" class="correct">Correct Answer</label>
-            <input type="checkbox" name="correct-2" id="correct-2" value="1" />
-          </div>
-
-          <div class="individual__question">
-            <input
-              class="input-field"
-              type="text"
-              id="ans_3"
-              name="ans_3"
-              placeholder="Enter Answer Here"
-              required
-            /><br>
-
-            <label for="correct-3" class="correct">Correct Answer</label>
-            <input type="checkbox" name="correct-3" id="correct-3" value="1" />
-          </div>
-
-          <div class="individual__question">
-            <input
-              class="input-field"
-              type="text"
-              id="ans_4"
-              name="ans_4"
-              placeholder="Enter Answer Here"
-              required
-            /><br>
-            
-            <label for="correct-4" class="correct">Correct Answer</label>
-            <input type="checkbox" name="correct-4" id="correct-4" value="1" />
-          </div>
-  
-          <button type="submit" class="submit-btn" id="question__submit">Save Question</button>
-        </form>
-      </section>
-      
-    </div>
-  </div>
-
-  <script src="script.js"></script>
-
-</body>
-
+    <script src="script.js"></script>
+    <script type="module" src="script2.js"></script>
+  </body>
 </html>

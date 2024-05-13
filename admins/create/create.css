@@ -6,29 +6,9 @@
   flex-direction: column;
   overflow: auto;
 }
-  
+
 h1 {
-  margin: 10px 30px
-}
-  
-.exam-info {
-  display: flex;
-  flex-direction: column;
-  margin-left: 30px;
-  margin-right: 30px;
-  padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  height: auto;
-}
-
-.info {
-  margin-bottom: 10px;
-}
-
-.info .title {
-  font-weight: bold;
-  font-size: 20px;
+  margin: 10px 30px;
 }
 
 .info .input {
@@ -83,7 +63,7 @@ h1 {
   height: auto;
 }
 
-.create-btn {
+/* .create-btn {
   font-size: 18px;
   border-radius: 5px;
   padding: 8px 10px;
@@ -97,26 +77,6 @@ h1 {
   cursor: pointer;
   color: white;
   background-color: rgb(45, 45, 160);
-}
-
-/* .exam-questions {
-  margin-left: 30px;
-  margin-right: 30px;
-  margin-bottom: 10px;
-  padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  flex: 1;
-} */
-
-/* .grid_question {
-  margin-left: 30px;
-  margin-right: 30px;
-  margin-bottom: 10px;
-  padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  flex: 1;
 } */
 
 .modal {
@@ -168,7 +128,6 @@ h1 {
 
 .question-name {
   margin-bottom: 20px;
-  background-color: aqua;
 }
 
 .individual__question {
@@ -190,7 +149,7 @@ h1 {
   border-radius: 5px;
   padding: 8px;
   background-color: aquamarine;
-  border: 1px solid rgba(0, 0, 0, 0.24)
+  border: 1px solid rgba(0, 0, 0, 0.24);
 }
 
 .submit-btn:hover {
@@ -200,23 +159,63 @@ h1 {
 
 /* ---------------------answer table sections------------------------------ */
 
-.ctn {
-  background-color: #eee;
-  margin-left: 30px;
-  margin-right: 30px;
-  margin-bottom: 10px;
+.ctn-question {
+  background-color: white;
+  margin: 1.5rem;
   padding: 20px;
-  border: 1px solid black;
   border-radius: 10px;
   flex: 1;
-  overflow: auto;
 }
 
-.grid_question {
-  display: grid;
-  grid-template-columns: 3fr 6fr 1fr;
-  gap: 2rem;
+.questionContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 1rem 3rem 1rem 3rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.question {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.answer {
+  margin-bottom: 10px;
+}
+.true {
+  color: green;
+}
+
+.edit-btn,
+.delete-exam-btn {
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.edit-btn {
+  color: #333;
+  background-color: #f0f0f0;
+}
+
+.edit-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.delete-exam-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.delete-exam-btn:hover {
+  background-color: #c82333;
+}
+
+/* genquestion end */
 
 .displayed__question,
 .displayed__answer {
@@ -238,4 +237,77 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+/* code ai */
+
+.exam-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+  margin-right: 30px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  height: auto;
+}
+
+.exam-info {
+  max-width: 400px;
+  margin: 0 1.5rem;
+}
+
+.info {
+  margin-bottom: 20px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.input {
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#timeFields {
+  margin-top: 10px;
+}
+
+#joinAnytime {
+  margin-top: 3rem;
+}
+
+/* grid code */
+
+.create-title-container {
+  display: flex;
+}
+
+.create-question {
+  border-radius: 10px;
+  background-color: white;
+  padding: 2rem 1rem 0 1rem;
+  flex-grow: 1;
+  margin-right: 2rem;
+}
+
+#question {
+  padding: 2rem 1rem;
+}
+
+.create-exam {
+  float: right;
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 8px;
+  background-color: aquamarine;
+  border: 1px solid rgba(0, 0, 0, 0.24);
+}
+
+.create-exam:hover {
+  cursor: pointer;
+  background-color: rgb(87, 175, 146);
 }
