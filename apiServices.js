@@ -1,5 +1,5 @@
 // apiService.js
-const API_BASE_URL = "http://localhost:8080"; // Base URL for your API
+const API_BASE_URL = "http://26.10.188.85:8080"; // Base URL for your API
 
 // Function to create default headers, with optional Bearer token
 function createHeaders(token = null) {

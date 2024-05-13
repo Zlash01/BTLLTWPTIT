@@ -61,6 +61,19 @@ const studentResults = [
   },
 ];
 
+import { apiGet } from "../../apiServices.js";
+let data = null;
+function getDataStatistic() {
+  // Retrieve the JSON string from localStorage
+  apiGet("/api/participations/statistic", localStorage.getItem("token")).then(
+    (response) => {
+      data = response.data;
+      console.log(data);
+      renderTableRows(data);
+    }
+  );
+}
+
 // Populate exam filter options
 const examFilter = document.getElementById("exam-filter");
 const uniqueExams = [...new Set(studentResults.map((result) => result.exam))];
@@ -71,6 +84,11 @@ uniqueExams.forEach((exam) => {
   examFilter.appendChild(option);
 });
 
+// hiển thị ngày theo dạng dd-mm-yyy
+function convertDateFormat(dateStr) {
+  return new Date(dateStr).toLocaleDateString();
+}
+
 // Render table rows
 function renderTableRows(filteredResults) {
   const tableBody = document.querySelector("#results-table tbody");
@@ -80,28 +98,40 @@ function renderTableRows(filteredResults) {
     const row = document.createElement("tr");
 
     const nameCell = document.createElement("td");
-    nameCell.textContent = result.name;
+    nameCell.textContent = result.user.name;
     row.appendChild(nameCell);
 
     const examCell = document.createElement("td");
-    examCell.textContent = result.exam;
+    examCell.textContent = result.exam.name;
     row.appendChild(examCell);
 
-    const entriesCell = document.createElement("td");
-    entriesCell.textContent = result.entries;
-    row.appendChild(entriesCell);
+    const startTimeCell = document.createElement("td");
+    startTimeCell.textContent = convertDateFormat(result.start_time);
+    row.appendChild(startTimeCell);
 
-    const completionCell = document.createElement("td");
-    completionCell.textContent = `${result.completionPercentage}%`;
-    row.appendChild(completionCell);
+    const endTimeCell = document.createElement("td");
+    endTimeCell.textContent = convertDateFormat(result.end_time);
+    row.appendChild(endTimeCell);
 
-    const avgPointCell = document.createElement("td");
-    avgPointCell.textContent = result.avgPoint;
-    row.appendChild(avgPointCell);
+    const scoreCell = document.createElement("td");
+    scoreCell.textContent = result.score;
+    row.appendChild(scoreCell);
 
-    const pointsCell = document.createElement("td");
-    pointsCell.textContent = result.points.join(", ");
-    row.appendChild(pointsCell);
+    // const entriesCell = document.createElement("td");
+    // entriesCell.textContent = result.entries;
+    // row.appendChild(entriesCell);
+
+    // const completionCell = document.createElement("td");
+    // completionCell.textContent = `${result.completionPercentage}%`;
+    // row.appendChild(completionCell);
+
+    // const avgPointCell = document.createElement("td");
+    // avgPointCell.textContent = result.avgPoint;
+    // row.appendChild(avgPointCell);
+
+    // const pointsCell = document.createElement("td");
+    // pointsCell.textContent = result.points.join(", ");
+    // row.appendChild(pointsCell);
 
     tableBody.appendChild(row);
   });
@@ -109,27 +139,33 @@ function renderTableRows(filteredResults) {
 
 // Filter results based on selected exam and date
 function filterResults() {
-  const selectedExam = examFilter.value;
+  const selectedExam = document.getElementById("exam-filter").value;
   const selectedDate = document.getElementById("date-filter").value;
 
-  let filteredResults = studentResults;
+  let filteredResults = data;
 
   if (selectedExam) {
     filteredResults = filteredResults.filter(
-      (result) => result.exam === selectedExam
+      (result) => result.exam.name === selectedExam
     );
   }
 
   if (selectedDate) {
-    const examDate = new Date(selectedDate);
+    const examDate = convertDateFormat(selectedDate);
+
+    console.log(examDate);
+    // filteredResults = filteredResults.filter((result) => {
+    //   //const exam = exams.find((e) => e.name === result.exam);
+    //   // if (exam.state === "specificTime") {
+    //   //   const examStartDate = new Date(exam.startTime);
+    //   //   const examEndDate = new Date(exam.endTime);
+    //   //   return examDate >= examStartDate && examDate <= examEndDate;
+    //   // }
+    //   // return true;
+    // });
     filteredResults = filteredResults.filter((result) => {
-      const exam = exams.find((e) => e.name === result.exam);
-      if (exam.state === "specificTime") {
-        const examStartDate = new Date(exam.startTime);
-        const examEndDate = new Date(exam.endTime);
-        return examDate >= examStartDate && examDate <= examEndDate;
-      }
-      return true;
+      let startTimeData = convertDateFormat(result.start_time);
+      return startTimeData === examDate; // Return the result of the comparison
     });
   }
 
@@ -137,25 +173,28 @@ function filterResults() {
 }
 
 // Initial table render
-renderTableRows(studentResults);
+//renderTableRows(studentResults);
+getDataStatistic();
 
 // Event listeners
-examFilter.addEventListener("change", filterResults);
-document
-  .getElementById("date-filter")
-  .addEventListener("change", filterResults);
+// examFilter.addEventListener("change", filterResults);
+// document
+//   .getElementById("date-filter")
+//   .addEventListener("change", filterResults);
 
 // Export to PDF
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('export-btn').addEventListener('click', () => {
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("export-btn").addEventListener("click", () => {
     const doc = new jspdf.jsPDF();
 
-    if (typeof doc.autoTable !== 'undefined') {
-      const table = document.getElementById('results-table');
+    if (typeof doc.autoTable !== "undefined") {
+      const table = document.getElementById("results-table");
       doc.autoTable({ html: table });
-      doc.save('student-results.pdf');
+      doc.save("student-results.pdf");
     } else {
-      console.error('jspdf-autotable plugin is not loaded correctly.');
+      console.error("jspdf-autotable plugin is not loaded correctly.");
     }
   });
 });
+
+window.filterResults = filterResults;
