@@ -1,6 +1,10 @@
 .main-content {
   background-color: rgb(236, 234, 234);
-  flex-grow: 1;
+  flex: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
 }
 
 h1 {
@@ -11,10 +15,9 @@ h1 {
 
 .search-filter {
   background-color: white;
-  margin: 30px;
+  margin: 0 30px;
   padding-top: 20px;
   padding-bottom: 20px;
-  width: 96%;
   border-radius: 10px;
 }
 
@@ -27,12 +30,19 @@ label {
   margin-right: 30px;
 }
 
-.result-table{
-  width: 96%;
+.result-container {
+  width: auto;
   margin: 30px;
   background-color: white;
-  border-collapse: collapse;
   border-radius: 10px;
+  flex: 1;
+  overflow: auto;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.result-table{
+  width: 100%;
+  border-spacing: 0;
 }
 
 td, th {

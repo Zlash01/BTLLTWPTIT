@@ -1,110 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Students' Result</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="details.css" />
-    <link rel="stylesheet" href="../../general.css" />
-  </head>
-  <body>
-    <header class="header margin-bot-sm">
-      <img
-        class="logo"
-        alt="Ptit"
-        src="https://code.ptit.edu.vn/2020/images/logo_ptit.png"
-      />
-      <nav class="main-nav">
-        <ul class="main-nav-list">
-          <li>
-            <a href="../../dashboard/html/index.html" class="main-nav-link"
-              >Dashboard</a
-            >
-          </li>
-          <li>
-            <a href="../../create/html/index.html" class="main-nav-link"
-              >Create</a
-            >
-          </li>
-          <li>
-            <a href="../../results/html/index.html" class="main-nav-link"
-              >Results</a
-            >
-          </li>
-          <li>
-            <a href="../../statistic/html/index.html" class="main-nav-link"
-              >Statistics</a
-            >
-          </li>
-          <li>
-            <a href="../../login/html/index.html" class="nav-cta main-nav-link"
-              >Sign out</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="details.css">
+    <link rel="stylesheet" href="../../general.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Chi tiết học sinh</title>
+</head>
 
-    <div class="container">
-      <div class="results-title">Details</div>
+<body>
+  <ul class="navbar">
+    <div class="logo-container">
+      <img class="logo" src="https://code.ptit.edu.vn/2020/images/logo_ptit.png" alt="Logo">
+    </div>
 
-      <div class="details">
-        <div class="exam-info">
-          <div>
-            Score:
-            <p class="info">10</p>
-          </div>
-          <div>
-            Category:
-            <p class="info">Practice</p>
-          </div>
-          <div>
-            Status:
-            <p class="info">Completed</p>
-          </div>
-          <p>Participation Time: 03/03/2024, 7:37:50 am</p>
-        </div>
+    <li><a href="../dashboard/index.html">Bài thi</a></li>
+    <li><a class="active" href="index.html">Học sinh</a></li>
+    <li><a href="../statistic/index.html">Thống kê</a></li>
+    <li><a href="#" class="logout-btn"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
+  </ul>
 
-        <h1>Detailed Answer</h1>
+  <div class="container">
 
-        <div class="exam-answers">
-          <div class="questions-answers">
-            <p class="questions">
-              Question 1: Triết học ra đời trong khoảng thời gian:
-            </p>
-            <p>Student's answer: B</p>
-            <p>Correct answer: B</p>
-          </div>
-          <div class="questions-answers">
-            <p class="questions">
-              Question 2: Chức năng của triết học Mác Lênin là:
-            </p>
-            <p>Student's answer: D</p>
-            <p>Correct answer: D</p>
-          </div>
-          <div class="questions-answers">
-            <p class="questions">Question 3: Vấn đề cơ bản của triết học là:</p>
-            <p>Student's answer: A</p>
-            <p>Correct answer: A</p>
-          </div>
-          <div class="questions-answers">
-            <p class="questions">
-              Question 4: Trong các câu sau, đâu là khẳng định đúng về triết
-              học?
-            </p>
-            <p>Student's answer: D</p>
-            <p>Correct answer: D</p>
-          </div>
-          <div class="questions-answers">
-            <p class="questions">
-              Question 5: Theo chủ nghĩa MácLênin, phát triển là:
-            </p>
-            <p>Student's answer: C</p>
-            <p>Correct answer: C</p>
+    <div class="user-pf">
+      <a class="back-btn" href="index.html"><i class="fa fa-chevron-left"></i> Quay lại</a>
+      
+      <div style="display: flex; align-items: center">
+        <img class="pfp" src="https://t4.ftcdn.net/jpg/03/49/49/79/360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg" />
+      
+        <div class="dropdown">
+          <button class="dropbtn">
+            <span id="username">Username</span>
+            <i class="fa fa-angle-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="../admin-pf/index.html">Hồ sơ</a>
           </div>
         </div>
       </div>
     </div>
-  </body>
+
+    <div class="main-content">
+        <h1>Chi tiết</h1>
+
+        <div class="exam-info-container">
+            <div class="info">
+              <span class="info-title">Tên bài thi:</span>
+              <span class="info-exam">Bài giữa kì I</span><br>
+              
+              <span class="info-title">Giới thiệu:</span>
+              <span class="info-exam">Bài giữa kì I môn CNXH</span><br>
+
+              <span class="info-title">Thời gian làm bài:</span>
+              <span class="info-exam">120 phút</span><br>
+            </div>
+
+            <div class="avgScore">
+              <span class="avg-title">
+                Điểm TB: <span class="avg-score">7.8</span>
+              </span>
+            </div>
+        </div>
+
+      <div class="result-container">
+        <table class="result-table">
+            <tr>
+              <th>STT</th>
+              <th>Tên sinh viên</th>
+              <th>Mã SV</th>
+              <th>Lớp</th>
+              <th>Thời gian hoàn thành</th>
+              <th>Điểm</th>
+              <th>Chi tiết</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Trần Đức Anh</td>
+              <td>B21DCDT004</td>
+              <td>E21CQCN02</td>
+              <td>20:24 - 11/05/2024</td>
+              <td>7.8</td>
+              <td><a class="details-btn" href="#"><i class="fa fa-external-link"></i></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Trần Đức Anh</td>
+              <td>B21DCDT004</td>
+              <td>E21CQCN02</td>
+              <td>20:24 - 11/05/2024</td>
+              <td>7.8</td>
+              <td><a class="details-btn" href="#"><i class="fa fa-external-link"></i></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Trần Đức Anh</td>
+              <td>B21DCDT004</td>
+              <td>E21CQCN02</td>
+              <td>20:24 - 11/05/2024</td>
+              <td>7.8</td>
+              <td><a class="details-btn" href="#"><i class="fa fa-external-link"></i></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Trần Đức Anh</td>
+              <td>B21DCDT004</td>
+              <td>E21CQCN02</td>
+              <td>20:24 - 11/05/2024</td>
+              <td>7.8</td>
+              <td><a class="details-btn" href="#"><i class="fa fa-external-link"></i></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Trần Đức Anh</td>
+              <td>B21DCDT004</td>
+              <td>E21CQCN02</td>
+              <td>20:24 - 11/05/2024</td>
+              <td>7.8</td>
+              <td><a class="details-btn" href="#"><i class="fa fa-external-link"></i></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Trần Đức Anh</td>
+              <td>B21DCDT004</td>
+              <td>E21CQCN02</td>
+              <td>20:24 - 11/05/2024</td>
+              <td>7.8</td>
+              <td><a class="details-btn" href="#"><i class="fa fa-external-link"></i></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Trần Đức Anh</td>
+              <td>B21DCDT004</td>
+              <td>E21CQCN02</td>
+              <td>20:24 - 11/05/2024</td>
+              <td>7.8</td>
+              <td><a class="details-btn" href="#"><i class="fa fa-external-link"></i></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Trần Đức Anh</td>
+              <td>B21DCDT004</td>
+              <td>E21CQCN02</td>
+              <td>20:24 - 11/05/2024</td>
+              <td>7.8</td>
+              <td><a class="details-btn" href="#"><i class="fa fa-external-link"></i></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Trần Đức Anh</td>
+              <td>B21DCDT004</td>
+              <td>E21CQCN02</td>
+              <td>20:24 - 11/05/2024</td>
+              <td>7.8</td>
+              <td><a class="details-btn" href="#"><i class="fa fa-external-link"></i></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Trần Đức Anh</td>
+              <td>B21DCDT004</td>
+              <td>E21CQCN02</td>
+              <td>20:24 - 11/05/2024</td>
+              <td>7.8</td>
+              <td><a class="details-btn" href="#"><i class="fa fa-external-link"></i></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Trần Đức Anh</td>
+              <td>B21DCDT004</td>
+              <td>E21CQCN02</td>
+              <td>20:24 - 11/05/2024</td>
+              <td>7.8</td>
+              <td><a class="details-btn" href="#"><i class="fa fa-external-link"></i></td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Trần Đức Anh</td>
+              <td>B21DCDT004</td>
+              <td>E21CQCN02</td>
+              <td>20:24 - 11/05/2024</td>
+              <td>7.8</td>
+              <td><a class="details-btn" href="#"><i class="fa fa-external-link"></i></td>
+            </tr>
+        </table>
+      </div>
+        
+    </div>
+
+  </div>
+
+</body>
 </html>
