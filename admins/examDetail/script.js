@@ -41,13 +41,13 @@ function getExamQuestions() {
   ).then((response) => {
     console.log(response);
     localStorage.setItem("questions", JSON.stringify(response));
+    addQuestionsToList(response);
   });
 }
 getExamQuestions();
 
 //get all questions?
-function addQuestionsToList() {
-  const jsonData = JSON.parse(localStorage.getItem("questions"));
+function addQuestionsToList(jsonData) {
   const questionList = document.getElementById("question-list");
 
   jsonData.forEach((questionObj, index) => {
@@ -92,8 +92,6 @@ function addQuestionsToList() {
   });
 }
 
-addQuestionsToList();
-
 function logout() {
   window.location.href = "../../auth/index.html";
 }
@@ -112,3 +110,7 @@ function DeleteCurrent() {
 
 document.getElementById("logout").addEventListener("click", logout);
 document.getElementById("delete").addEventListener("click", DeleteCurrent);
+
+document.getElementById("edit-btn").addEventListener("click", function () {
+  window.location.href = `../create/create.html?reload=${Math.random()}`;
+});

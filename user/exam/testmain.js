@@ -10,9 +10,6 @@ function startExamParticipation() {
   // Retrieve exam ID and token from localStorage
   const exam_id = localStorage.getItem("exam_id");
   const token = localStorage.getItem("token");
-  // console.log(exam_id);
-  // console.log(token);
-  // Check if exam_id and token are available
   if (!exam_id || !token) {
     console.error("Exam ID or token not found in localStorage.");
     return;
@@ -36,7 +33,7 @@ function startExamParticipation() {
       console.error("Error creating participation: ", error);
     });
 }
-//startExamParticipation();
+startExamParticipation();
 
 //get time for exams?
 function getDataExams() {
@@ -51,58 +48,19 @@ function getDataExams() {
       console.error("Error fetching exams:", error);
     });
 }
-//getDataExams();
+getDataExams();
 
-//get all questions?
 function getExamQuestions() {
-  const exam_id = localStorage.getItem("exam_id");
-  apiGet(`/api/questions/exam/${exam_id}`, localStorage.getItem("token"))
-    .then((response) => {
-      const questionsWithId = response.map(({ id, question_text }) => ({
-        id,
-        question_text,
-        answers: [], // Initialize answers array for each question
-      }));
-      console.log(questionsWithId);
-      localStorage.setItem("questions", JSON.stringify(questionsWithId));
-    })
-    .catch((error) => {
-      console.error("Error fetching exams:", error);
-    });
+  var exam_id = localStorage.getItem("exam_id");
+  apiGet(
+    `/api/questions/all-question/${exam_id}`,
+    localStorage.getItem("token")
+  ).then((response) => {
+    console.log(response);
+    addQuestionsToWeb(response);
+  });
 }
 getExamQuestions();
-
-// get all answers?
-function getExamAnswers() {
-  const questionsWithId = JSON.parse(localStorage.getItem("questions"));
-  console.log(questionsWithId);
-  const token = localStorage.getItem("token");
-  const promises = questionsWithId.map(({ id, question_text }) => {
-    return apiGet(`/api/answers/${id}`, token)
-      .then((response) => {
-        const answers = response.map(({ id, answer_text, is_correct }) => ({
-          id,
-          answer_text,
-          is_correct,
-        }));
-        const question = questionsWithId.find((q) => q.id === id);
-        question.answers = answers;
-        //console.log(`Answers for question ${id} (${question_text}):`, answers);
-      })
-      .catch((error) => {
-        console.error(
-          `Error fetching answer for question ${id} (${question_text}):`,
-          error
-        );
-      });
-  });
-  Promise.all(promises).then(() => {
-    localStorage.setItem("questions", JSON.stringify(questionsWithId));
-    console.log("All answers added to questions JSON.");
-    console.log(questionsWithId);
-  });
-}
-getExamAnswers();
 
 function countdownTimer() {
   const countDownDate =
@@ -162,7 +120,45 @@ document.getElementById("submitButton").addEventListener("click", function () {
   window.location.href = "../results/index.html?score=" + score;
 });
 
-document.addEventListener("DOMContentLoaded", function () {
+// Function to dynamically add questions to the web
+function addQuestionsToWeb(questionsData) {
+  const questionsContainer = document.getElementById("questions-container");
+
+  questionsData.forEach((questionData, index) => {
+    const questionDiv = document.createElement("div");
+    questionDiv.classList.add("question");
+
+    const questionNumber = document.createElement("p");
+    questionNumber.classList.add("question-number");
+    questionNumber.textContent = `Question ${index + 1}`;
+    questionDiv.appendChild(questionNumber);
+
+    const questionText = document.createElement("p");
+    questionText.classList.add("question-text");
+    questionText.textContent = questionData.question.question_text;
+    questionDiv.appendChild(questionText);
+
+    const answersList = document.createElement("ul");
+    questionData.question.answers.forEach((answer, answerIndex) => {
+      const answerItem = document.createElement("li");
+      const answerLabel = document.createElement("label");
+      const answerInput = document.createElement("input");
+      answerInput.type = "radio";
+      answerInput.name = `question-${questionData.question.id}`;
+      answerInput.value = answer.id;
+      answerInput.dataset.questionId = questionData.question.id;
+      answerInput.dataset.answerId = answer.id;
+      answerLabel.appendChild(answerInput);
+      answerLabel.appendChild(document.createTextNode(`${answer.answer_text}`));
+      answerItem.appendChild(answerLabel);
+      answersList.appendChild(answerItem);
+    });
+    questionDiv.appendChild(answersList);
+    questionsContainer.appendChild(questionDiv);
+  });
+}
+
+function checkbox() {
   const testForms = document.getElementsByClassName("testform");
   const boxContainer = document.getElementById("box-container");
 
@@ -170,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
   Array.from(testForms).forEach(function (testForm) {
     // Get all questions and their corresponding radio buttons within the current test form
     const questions = testForm.querySelectorAll(".question");
-
+    console.log("debugginnnn", questions.length);
     // Create question indicator buttons dynamically
     questions.forEach(function (question, index) {
       const button = document.createElement("button");
@@ -209,83 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
-});
-
-//added indcator generator
-
-// Sample JSON data of questions and answers
-const questionsData = [
-  {
-    id: 1,
-    question_id: 1,
-    question_text: "Triết học ra đời trong khoảng thời gian:",
-    answers: [
-      {
-        answer_text: "Xuất hiện cùng lúc với sự xuất hiện của con người",
-        is_correct: false,
-      },
-      {
-        answer_text: "Từ khoảng thế kỉ VIII đến thế kỉ VI TCN",
-        is_correct: true,
-      },
-      {
-        answer_text: "Từ khoảng thế kỉ VI đến thế kỉ I TCN",
-        is_correct: false,
-      },
-      {
-        answer_text: "Từ khoảng thế kỉ I TCN đến thế kỉ III",
-        is_correct: false,
-      },
-    ],
-  },
-  // Add more question objects here if needed
-];
-
-// Function to dynamically add questions to the web
-function addQuestionsToWeb() {
-  const questionsContainer = document.getElementById("questions-container");
-
-  questionsData.forEach((question, index) => {
-    const questionDiv = document.createElement("div");
-    questionDiv.classList.add("question");
-
-    const questionNumber = document.createElement("p");
-    questionNumber.classList.add("question-number");
-    questionNumber.textContent = `Question ${index + 1}`;
-    questionDiv.appendChild(questionNumber);
-
-    const questionText = document.createElement("p");
-    questionText.classList.add("question-text");
-    questionText.textContent = question.question_text;
-    questionDiv.appendChild(questionText);
-
-    const answersList = document.createElement("ul");
-    question.answers.forEach((answer, answerIndex) => {
-      const answerItem = document.createElement("li");
-      const answerLabel = document.createElement("label");
-      const answerInput = document.createElement("input");
-      answerInput.type = "radio";
-      answerInput.name = `question${index + 1}`;
-      answerInput.value = `option${answerIndex + 1}`;
-      answerLabel.appendChild(answerInput);
-      answerLabel.appendChild(document.createTextNode(`${answer.answer_text}`));
-      answerItem.appendChild(answerLabel);
-      answersList.appendChild(answerItem);
-    });
-
-    questionDiv.appendChild(answersList);
-
-    const correctAnswerInput = document.createElement("input");
-    correctAnswerInput.type = "hidden";
-    correctAnswerInput.name = `correct${index + 1}`;
-    correctAnswerInput.value = `option${
-      question.answers.findIndex((a) => a.is_correct) + 1
-    }`;
-    questionDiv.appendChild(correctAnswerInput);
-
-    questionsContainer.appendChild(questionDiv);
-  });
 }
+checkbox();
 
-// Call the function to add questions to the web
-addQuestionsToWeb();
+document.addEventListener("DOMContentLoaded", checkbox);

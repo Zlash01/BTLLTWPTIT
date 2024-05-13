@@ -1,4 +1,4 @@
-import { apiGet, apiPost } from "../../apiServices.js";
+import { apiDelete, apiGet, apiPost } from "../../apiServices.js";
 
 document.getElementById("joinAnytime").addEventListener("change", function () {
   var timeFields = document.getElementById("timeFields");
@@ -120,12 +120,12 @@ function getExamQuestions() {
     localStorage.getItem("token")
   ).then((response) => {
     console.log(response);
-    localStorage.setItem("questions", JSON.stringify(response));
+    addQuestionsToList(response);
   });
 }
 
-function addQuestionsToList() {
-  const jsonData = JSON.parse(localStorage.getItem("questions"));
+function addQuestionsToList(jsonData) {
+  // const jsonData = JSON.parse(localStorage.getItem("questions"));
   console.log("fdsafksajlk", jsonData);
   const questionList = document.getElementById("ctn-question");
 
@@ -190,12 +190,76 @@ function addQuestionsToList() {
 
 function editQuestion(questionId) {
   console.log(`Edit Question with ID: ${questionId}`);
-  // Add your code to handle editing the question here
+
+  apiGet(
+    `/api/questions/single-question/${questionId}`,
+    localStorage.getItem("token")
+  )
+    .then((response) => {
+      console.log("question response:", response);
+
+      // Get the question data from the response
+      const questionData = response;
+
+      // Get the HTML elements
+      const questionInput = document.getElementById("question");
+      const ans1Input = document.getElementById("ans_1");
+      const ans2Input = document.getElementById("ans_2");
+      const ans3Input = document.getElementById("ans_3");
+      const ans4Input = document.getElementById("ans_4");
+
+      // Set the values of the input fields
+      questionInput.value = questionData.question_text;
+      ans1Input.value = questionData.answers[0].answer_text;
+      ans2Input.value = questionData.answers[1].answer_text;
+      ans3Input.value = questionData.answers[2].answer_text;
+      ans4Input.value = questionData.answers[3].answer_text;
+
+      // Create radio buttons for each answer
+      const answerContainer = document.createElement("div");
+      questionData.answers.forEach((answer, index) => {
+        const radioButton = document.createElement("input");
+        radioButton.type = "radio";
+        radioButton.name = "correct";
+        radioButton.value = index + 1;
+        radioButton.checked = answer.is_correct;
+
+        const label = document.createElement("label");
+        label.textContent = `Answer ${index + 1}`;
+
+        answerContainer.appendChild(radioButton);
+        answerContainer.appendChild(label);
+      });
+
+      // Append the answer container to the page
+      document.body.appendChild(answerContainer);
+      deleteEdit(questionId);
+    })
+    .catch((error) => {
+      console.log("error: ", error);
+    });
+}
+
+function deleteEdit(questionId) {
+  apiDelete(
+    `/api/questions/${questionId}`,
+    localStorage.getItem("token")
+  ).catch((error) => {
+    console.log("error: ", error);
+  });
 }
 
 function deleteQuestion(questionId) {
   console.log(`Delete Question with ID: ${questionId}`);
   // Add your code to handle deleting the question here
+  apiDelete(
+    `/api/questions/${questionId}`,
+    localStorage.getItem("token")
+  ).catch((error) => {
+    console.log("error: ", error);
+  });
+  alert("Delete Sucessfully!");
+  window.location.href = `./create.html?reload=${Math.random()}`;
 }
 
 function bundle() {
@@ -207,3 +271,20 @@ function bundle() {
 }
 
 window.onload = bundle;
+
+function logout() {
+  window.location.href = "../../auth/index.html";
+}
+document.getElementById("logout").addEventListener("click", logout);
+
+function setDataUser() {
+  // Retrieve the JSON string from localStorage
+  apiGet("/api/users/current", localStorage.getItem("token")).then(
+    (response) => {
+      const name = response.name;
+      const usernameElement = document.getElementById("username");
+      usernameElement.textContent = name;
+    }
+  );
+}
+setDataUser();
