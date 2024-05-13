@@ -35,7 +35,7 @@ h1 {
 .res__table {
   box-sizing: border-box;
   margin: 30px;
-  border-radius: 10px;
+  border-radius: 25px;
 }
 
 table {
@@ -48,4 +48,12 @@ th, td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
+}
+.chart-container {
+  margin: 50px auto 0;
+  width: 70%;
+  height: 500px; 
+  display:flexbox;
+  justify-content: center; 
+  align-items: center; 
 }

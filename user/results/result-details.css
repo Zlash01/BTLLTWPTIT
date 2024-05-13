@@ -14,54 +14,107 @@
 
 .main-content {
   background-color: rgb(236, 234, 234);
-  flex-grow: 1;
-}
-
-.result-box {
-  background-color: white;
-  margin: 30px;
-  padding: 5px 20px 30px;
-  border-radius: 10px;
-}
-
-.exam-info {
-  font-size: 20px;
-}
-
-.result-info {
-  text-align: center;
-  font-size: 2rem;
-  line-height: 20px;
-}
-
-.question-list-container {
-  border: 2px solid #222;
-  background-color: #f0efef;
-  padding: 1.2rem;
-  border-radius: 5px;
-}
-
-.question-box {
+  flex: 1;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: baseline;
-  gap: 0.5rem;
-  background-color: #eee;
-  padding: 0.6rem 1.2rem;
-  border: 1px groove #111;
-  border-radius: 5px;
-}
-
-#question-list {
-  font-size: 1.6rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  overflow: auto;
 }
 
 h1 {
   margin-top: 30px;
   margin-left: 30px;
   margin-right: 10px;
+}
+
+.result-box {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  margin-left: 30px;
+  margin-right: 30px;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.exam-info {
+  line-height: 2;
+  width: 60%;
+}
+
+.exam-title {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.exam-data {
+  font-size: 20px;
+}
+
+.result-info {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 26px;
+}
+
+.score {
+  font-weight: normal;
+  font-size: 32px;
+  color: red;
+  border: 2px solid rgba(0, 0, 0, 0.507);
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.question-list-container {
+  margin: 30px;
+  background-color: white;
+  border-radius: 10px;
+  flex: 1;
+  overflow: auto;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+#question-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.question-box {
+  display: flex;
+  flex-direction: column;
+  background-color: #eee;
+  margin: 10px 20px;
+  padding: 10px 20px;
+  border: 1px groove #111;
+  border-radius: 5px;
+}
+
+.question-title {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.question-title span {
+  font-weight: normal;
+}
+
+.question-answer {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.correct-ans {
+  color: rgb(55, 226, 55) !important;
+  font-weight: bold;
+}
+
+.chosen-ans {
+  color: rgb(255, 0, 0);
+  font-weight: bold;
 }

@@ -107,6 +107,83 @@ function renderTableRows(filteredResults) {
   });
 }
 
+//Render chart
+let myChart = null; // Declare myChart variable outside the function scope
+
+function renderChart(filteredResults) {
+  const ctx = document.getElementById('myChart').getContext('2d');
+
+  // Chuẩn bị dữ liệu cho biểu đồ
+  const labels = filteredResults.map(result => result.name);
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Điểm trung bình',
+        data: filteredResults.map(result => result.avgPoint),
+        backgroundColor: 'rgba(255, 99, 132, 0.5)', // Màu nền cột biểu đồ
+        borderColor: 'rgba(255, 99, 132, 1)', // Màu viền cột biểu đồ
+        borderWidth: 1
+      }
+    ]
+  };
+
+  if (myChart) {
+    // Update existing chart
+    myChart.data.labels = data.labels;
+    myChart.data.datasets[0].data = data.datasets[0].data;
+    myChart.update(); // Update chart with new data
+  } else {
+    // Create new chart
+    myChart = new Chart(ctx, {
+      type: 'bar',
+      data: data,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 10,
+            ticks: {
+              font: {
+                size: 12,
+                color: 'rgba(255, 99, 132, 1)' // Màu phông chữ trục y
+              }
+            },
+            grid: {
+              color: 'rgba(255, 99, 132, 0.2)' // Màu đường lưới trục y
+            }
+          },
+          x: {
+            ticks: {
+              font: {
+                size: 14,
+                color: 'rgba(255, 99, 132, 1)' // Màu phông chữ trục x
+              }
+            },
+            grid: {
+              color: 'rgba(255, 99, 132, 0.2)' // Màu đường lưới trục x
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              font: {
+                size: 15,
+                color: 'rgba(255, 99, 132, 1)' // Màu phông chữ hộp thoại chú giải
+              }
+            }
+          }
+        }
+      }
+    });
+  }
+}
+
+
 // Filter results based on selected exam and date
 function filterResults() {
   const selectedExam = examFilter.value;
@@ -134,10 +211,14 @@ function filterResults() {
   }
 
   renderTableRows(filteredResults);
+  renderChart(filteredResults); // Update the chart with filtered results
 }
 
 // Initial table render
 renderTableRows(studentResults);
+
+// Initial chart render
+renderChart(studentResults);
 
 // Event listeners
 examFilter.addEventListener("change", filterResults);
@@ -158,4 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('jspdf-autotable plugin is not loaded correctly.');
     }
   });
-});
+}); 
+
+
+

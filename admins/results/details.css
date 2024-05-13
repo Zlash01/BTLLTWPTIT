@@ -1,33 +1,121 @@
-.details{
-    background-color: aliceblue;
-    padding: 20px;
-    margin-top: 20px;
-    line-height: 1.6;
+.user-pf {
+    justify-content: space-between !important;
 }
 
-h1{
-    text-align: left;
-    padding-top: 10px;
-    padding-bottom: 10px;
+.back-btn {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
 }
 
-.details .exam-info{
-    font-size: 25px;
-}
-
-.details .exam-info .info{
+.back-btn:hover {
     color: red;
-    display: inline;
 }
 
-.exam-answers{
-    font-size: 18px;
+.main-content {
+    background-color: rgb(236, 234, 234);
+    flex: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
 }
 
-.exam-answers .questions-answers{
-    margin-bottom: 15px;
+h1 {
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 10px;
 }
 
-.exam-answers .questions-answers .questions{
+.exam-info-container {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.info {
+    line-height: 2;
+    width: 60%;
+}
+
+.info-title {
     font-weight: bold;
+    font-size: 24px;
+}
+
+.info-exam {
+    font-size: 20px;
+}
+
+.avgScore {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.avg-title {
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.avg-score {
+    font-weight: normal;
+    font-size: 32px;
+    color: red;
+    border: 2px solid rgba(0, 0, 0, 0.507);
+    border-radius: 10px;
+    padding: 25px;
+}
+
+.search {
+    font-size: 16px;
+    margin-right: 30px;
+}
+
+.result-container {
+    width: auto;
+    margin: 30px;
+    background-color: white;
+    border-radius: 10px;
+    flex: 1;
+    overflow: auto;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.result-table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+/* make the table header sticky when scrolled */
+
+.result-table th {
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
+.result-table td,
+th {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+}
+
+.result-table td:last-child,
+th:last-child {
+    text-align: center;
+}
+
+.details-btn {
+    font-size: 24px;
+    color: black;
+}
+
+.details-btn:hover {
+    color: red;
 }
