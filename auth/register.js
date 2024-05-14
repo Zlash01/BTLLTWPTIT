@@ -54,7 +54,7 @@ function checkRegisterBackend(email, password, name, class_id, student_id) {
       window.location.href = "http://127.0.0.1:5500/auth/index.html";
     })
     .catch((error) => {
-      alert("Đăng nhập thất bại");
+      alert("Đăng ký thất bại");
       console.log(error);
     });
 }

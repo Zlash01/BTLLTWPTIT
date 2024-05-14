@@ -109,10 +109,16 @@ function logout() {
   window.location.href = "../../auth/index.html";
 }
 
+function create() {
+  localStorage.setItem("exam_id", 0);
+  window.location.href = "../create/create.html";
+}
+
 setDataUser();
 getDataExams();
 renderExams();
 
+document.getElementById("create-btn").addEventListener("click", create);
 document.getElementById("searchInput").addEventListener("input", renderExams);
 document.getElementById("filterState").addEventListener("change", renderExams);
 document.getElementById("logout").addEventListener("click", logout);
