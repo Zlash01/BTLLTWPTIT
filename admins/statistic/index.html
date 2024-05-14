@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -74,5 +74,96 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
     <script src="script.js"></script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thống kê</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../general.css" />
+    <link
+      rel="stylesheet"
+      href="https://c...content-available-to-author-only...e.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+
+  <body>
+    <ul class="navbar">
+      <div class="logo-container">
+        <img
+          class="logo"
+          src="https://code.ptit.edu.vn/2020/images/logo_ptit.png"
+          alt="Logo"
+        />
+      </div>
+
+      <li><a href="../dashboard/index.html">Bài thi</a></li>
+      <li><a href="../results/index.html">Học sinh</a></li>
+      <li><a class="active" href="index.html">Thống kê</a></li>
+      <li>
+        <a href="#" class="logout-btn"
+          ><i class="fa fa-sign-out"></i> Đăng xuất</a
+        >
+      </li>
+    </ul>
+
+    <div class="container">
+      <div class="user-pf">
+        <img
+          class="pfp"
+          src="https://t...content-available-to-author-only...n.net/jpg/03/49/49/79/360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg"
+        />
+
+        <div class="dropdown">
+          <button class="dropbtn">
+            <span id="username">Username</span> <i class="fa fa-angle-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Hồ sơ</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <h1>Thống kê</h1>
+
+        <div class="filters">
+          <label for="exam-filter">Tên bài thi</label>
+          <select id="exam-filter" onchange="filterResults()">
+            <option value="">All Exams</option>
+          </select>
+
+          <label for="date-filter">Ngày thi</label>
+          <input type="date" id="date-filter" onchange="filterResults()" />
+        </div>
+
+        <div class="res__table">
+          <table id="results-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Exam</th>
+                <th>StartTime</th>
+                <th>EndTime</th>
+                <th>Scores</th>
+                <!-- <th>Entries</th>
+              <th>Completion %</th>
+              <th>Avg. Point</th> -->
+                <!-- <th>Points</th> -->
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://c...content-available-to-author-only...e.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://c...content-available-to-author-only...e.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <script type="module" src="script.js"></script>
   </body>
 </html>
