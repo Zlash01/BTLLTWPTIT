@@ -1,4 +1,4 @@
-import { apiGet, apiPost } from "../../apiServices.js";
+import { apiGet, apiPost, apiPut } from "../../apiServices.js";
 
 var minsEl = document.getElementById("minutes");
 var secsEl = document.getElementById("seconds");
@@ -24,6 +24,7 @@ function startExamParticipation() {
       if (response.total_questions !== undefined) {
         const total_questions = response.total_questions;
         localStorage.setItem("total_questions", total_questions);
+        localStorage.setItem("participation_id", response.id);
         console.log("Successful! Total questions:", total_questions);
       } else {
         console.error("Total questions not found in the response.");
@@ -33,7 +34,6 @@ function startExamParticipation() {
       console.error("Error creating participation: ", error);
     });
 }
-startExamParticipation();
 
 //get time for exams?
 function getDataExams() {
@@ -48,19 +48,60 @@ function getDataExams() {
       console.error("Error fetching exams:", error);
     });
 }
-getDataExams();
 
 function getExamQuestions() {
   var exam_id = localStorage.getItem("exam_id");
   apiGet(
     `/api/questions/all-question/${exam_id}`,
     localStorage.getItem("token")
-  ).then((response) => {
-    console.log(response);
-    addQuestionsToWeb(response);
-  });
+  )
+    .then((response) => {
+      console.log(response);
+      addQuestionsToWeb(response);
+    })
+    .then(() => checkbox());
 }
-getExamQuestions();
+
+function submitExam() {
+  //get all the questions id and answer (radio button) corresponding to the answer id
+  const questions = document.querySelectorAll(".question");
+  const answers = [];
+  questions.forEach((question) => {
+    const question_id = question.querySelector("input").dataset.questionId;
+    const answer_id = question.querySelector("input:checked").dataset.answerId;
+    answers.push({ question_id, answer_id });
+  });
+
+  let submitData = {
+    participationId: localStorage.getItem("participation_id"),
+    answers: answers,
+  };
+  console.log(submitData);
+
+  apiPost(
+    `/api/student-answers/${localStorage.getItem("participation_id")}`,
+    submitData,
+    localStorage.getItem("token")
+  )
+    .then((response) => {
+      console.log("Submit response:", response);
+    })
+    .then(() => {
+      apiPut(
+        `/api/participations/exams/submit/${localStorage.getItem(
+          "participation_id"
+        )}`,
+        {},
+        localStorage.getItem("token")
+      ).then((response) => {
+        console.log("Submit exam response:", response);
+        // window.location.href = "/user/exam/result.html";
+      });
+    })
+    .catch((error) => {
+      console.error("Error submitting exam:", error);
+    });
+}
 
 function countdownTimer() {
   const countDownDate =
@@ -79,20 +120,7 @@ function countdownTimer() {
       clearInterval(interval);
       minsEl.innerText = "00";
       secsEl.innerText = "00";
-      document.getElementById("testForm").submit();
-
-      // Display score after timer expires
-      var formData = new FormData(document.getElementById("testForm"));
-      var correctAnswers = document.querySelectorAll('input[type="hidden"]');
-      var score = 0;
-
-      for (let i = 0; i < correctAnswers.length; i++) {
-        if (formData.get("question" + (i + 1)) === correctAnswers[i].value) {
-          score++;
-        }
-      }
-
-      window.location.href = "../results/html/index.html?score=" + score;
+      submitExam();
     }
   }, 1000);
 }
@@ -103,22 +131,6 @@ function formatNumber(number) {
   }
   return number;
 }
-
-countdownTimer();
-
-document.getElementById("submitButton").addEventListener("click", function () {
-  var formData = new FormData(document.getElementById("testForm"));
-  var correctAnswers = document.querySelectorAll('input[type="hidden"]');
-  var score = 0;
-
-  for (let i = 0; i < correctAnswers.length; i++) {
-    if (formData.get("question" + (i + 1)) === correctAnswers[i].value) {
-      score++;
-    }
-  }
-
-  window.location.href = "../results/index.html?score=" + score;
-});
 
 // Function to dynamically add questions to the web
 function addQuestionsToWeb(questionsData) {
@@ -166,7 +178,7 @@ function checkbox() {
   Array.from(testForms).forEach(function (testForm) {
     // Get all questions and their corresponding radio buttons within the current test form
     const questions = testForm.querySelectorAll(".question");
-    console.log("debugginnnn", questions.length);
+    console.log("debug", questions.length);
     // Create question indicator buttons dynamically
     questions.forEach(function (question, index) {
       const button = document.createElement("button");
@@ -206,6 +218,9 @@ function checkbox() {
     });
   });
 }
-checkbox();
 
-document.addEventListener("DOMContentLoaded", checkbox);
+countdownTimer();
+startExamParticipation();
+getDataExams();
+getExamQuestions();
+document.getElementById("submitButton").addEventListener("click", submitExam);
