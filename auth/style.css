@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
-  background-image: url('https://lh3.googleusercontent.com/pw/AP1GczNz6ce5CivhsN0vrBUO3argjTdoQc_WvMgQiNbG4VDk-dfot_aiLDJQcCWMHscVpkVoifAgC8HufKSJyX8n0qAgJNf9ZvSWzDSWWBCMdIKqqKSiDk43l5J449vEBPRUwUAwKJHtT5JpfMdoAFlqHZUW=w1365-h768-s-no?authuser=0');
+  background-image: url('../pixelcut-export_out.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -103,4 +103,44 @@ body {
 .login__btn:hover,
 .register__btn:hover {
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  body {
+    background-image: none;
+  }
+
+  .login__main {
+    left: 50%;
+    width: 80%;
+    max-width: 300px;
+    padding: 20px;
+    box-shadow: none;
+    background-color: white;
+    border: 1px solid black;
+  }
+}
+
+@media (max-width: 480px) {
+  .login__main {
+    width: 100%;
+    padding: 10px;
+    box-shadow: none;
+  }
+
+  .login__main__title {
+    font-size: 2rem;
+  }
+
+  .login__main__form label {
+    font-size: 1.4rem;
+  }
+
+  .login__main__form button {
+    padding: 1.2rem 2.4rem;
+  }
+
+  .account {
+    font-size: 1.2rem;
+  }
 }
