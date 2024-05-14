@@ -8,21 +8,26 @@
     <link rel="stylesheet" href="edit.css" />
     <link rel="stylesheet" href="../../general.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://kit.fontawesome.com/4936e85720.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <ul class="navbar">
-        <div class="logo-container">
+    <nav class="navbar">
+        <ul class="navbar-nav">
+          <li class="nav-item logo-container">
             <img class="logo" src="https://code.ptit.edu.vn/2020/images/logo_ptit.png" alt="Logo" />
-        </div>
-
-        <li><a href="../dashboard/index.html">Bài thi</a></li>
-        <li><a href="../results/index.html">Học sinh</a></li>
-        <li><a href="../statistic/index.html">Thống kê</a></li>
-        <li>
-            <a href="#" class="logout-btn"><i class="fa fa-sign-out"></i> Đăng xuất</a>
-        </li>
-    </ul>
+          </li>
+      
+          <li class="nav-item"><a href="../dashboard/index.html"><i class="icon fa-solid fa-list-check"></i>Bài thi</a></li>
+          <li class="nav-item"><a href="../results/index.html"><i class="icon fas fa-user-graduate"></i>Học sinh</a></li>
+          <li class="nav-item"><a href="../statistic/index.html"><i class="icon fas fa-chart-bar"></i>Thống kê</a></li>
+          <li class="nav-item">
+            <a id="logout" class="logout-btn"
+              ><i class="icon fa fa-sign-out"></i> Đăng xuất</a
+            >
+          </li>
+        </ul>
+      </nav>
 
     <div class="container">
         <div class="user-pf">
@@ -34,7 +39,7 @@
                     <span id="username">Username</span> <i class="fa fa-angle-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="index.html">Hồ sơ</a>
+                    <a href="index.html"><i class="icon fa-solid fa-user"></i>Hồ sơ</a>
                 </div>
             </div>
         </div>
@@ -44,7 +49,7 @@
                 <img class="avatar"
                     src="https://t4.ftcdn.net/jpg/03/49/49/79/360_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg" />
                 <div class="username" id="name">Username</div>
-                <div class="role" id="role">Học sinh</div>
+                <div class="role" id="role">Giáo viên</div>
                 <div>
                     <button class="update-btn">Thay đổi ảnh</button>
                 </div>
