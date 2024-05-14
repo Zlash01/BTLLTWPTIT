@@ -10,25 +10,25 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <script src="https://kit.fontawesome.com/4936e85720.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <ul class="navbar">
-      <div class="logo-container">
-        <img
-          class="logo"
-          src="https://code.ptit.edu.vn/2020/images/logo_ptit.png"
-          alt="Logo"
-        />
-      </div>
-
-      <li><a href="../main/index.html">Bài thi</a></li>
-      <li><a href="../results/results.html">Kết quả</a></li>
-      <li>
-        <a href="#" class="logout-btn"
-          ><i class="fa fa-sign-out"></i> Đăng xuất</a
-        >
-      </li>
-    </ul>
+    <nav class="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item logo-container">
+          <img class="logo" src="https://code.ptit.edu.vn/2020/images/logo_ptit.png" alt="Logo" />
+        </li>
+    
+        <li class="nav-item"><a href="../main/index.html"><i class="icon fa-solid fa-list-check"></i>Bài thi</a></li>
+        
+        <li class="nav-item"><a href="../results/results.html"><i class="icon fa-solid fa-graduation-cap"></i>Kết quả</a></li>
+        
+        <li class="nav-item">
+          <a id="logout" class="logout-btn"><i class="icon fa fa-sign-out"></i>Đăng xuất</a>
+        </li>
+  
+      </ul>
+    </nav>
 
     <div class="container">
         <div class="user-pf">
@@ -42,7 +42,7 @@
                 <span id="username">Username</span> <i class="fa fa-angle-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="index.html">Hồ sơ</a>
+                <a href="index.html"><i class="icon fa-solid fa-user"></i>Hồ sơ</a>
             </div>
             </div>
         </div>
@@ -63,19 +63,19 @@
                 <div class="info">
                   <table>
                     <tr>
-                      <td class="info-title">Tên</td>
+                      <td class="info-title"><i class="icon fa-solid fa-user"></i>Tên</td>
                       <td class="info-user">Username</td>
                     </tr>
                     <tr>
-                      <td class="info-title">Mã SV</td>
+                      <td class="info-title"><i class="icon fa-solid fa-id-card"></i>Mã SV</td>
                       <td class="info-user">B21DCDT000</td>
                     </tr>
                     <tr>
-                      <td class="info-title">Lớp</td>
+                      <td class="info-title"><i class="icon fa-solid fa-landmark"></i>Lớp</td>
                       <td class="info-user">E21CQCN02</td>
                     </tr>
                     <tr>
-                      <td class="info-title">Email</td>
+                      <td class="info-title"><i class="icon fa-solid fa-envelope"></i>Email</td>
                       <td class="info-user">user@gmail.com</td>
                     </tr>
                   </table>
